@@ -10,7 +10,7 @@
 - Operators: https://docs.ruby-lang.org/en/master/syntax/operators_rdoc.html#label-Operators
 - Conditional branching: https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Control_Structures
 - Loops: https://www.geeksforgeeks.org/ruby-loops-for-while-do-while-until/
-- Exception handling: https://ruby-doc.com/docs/ProgrammingRuby/html/tut_exceptions.html
+- Exception handling: https://ruby-doc.org/core-3.1.0/doc/syntax/exceptions_rdoc.html
 - Method calls: https://docs.ruby-lang.org/en/master/syntax/calling_methods_rdoc.html
 - Blocks: https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/
 - Methods: https://docs.ruby-lang.org/en/2.3.0/syntax/methods_rdoc.html
