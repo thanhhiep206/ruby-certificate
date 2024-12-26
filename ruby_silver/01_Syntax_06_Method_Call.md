@@ -274,4 +274,22 @@ forwarding_method(1, b: 2) { puts 3 }
 #=>  [[1], {:b=>2}, #<Proc:...skip...>]
 ```
 
+### Method Lookup
+When you send a message, Ruby looks up the method that matches the name of the message for the receiver. Methods are stored in classes and modules so method lookup walks these, not the objects themselves.
+
+Here is the order of method lookup for the receiver’s class or module R:
+
+The prepended modules of R in reverse order
+
+For a matching method in R
+
+The included modules of R in reverse order
+
+If R is a class with a superclass, this is repeated with R‘s superclass until a method is found.
+
+Once a match is found method lookup stops.
+
+If no match is found this repeats from the beginning, but looking for method_missing. The default method_missing is BasicObject#method_missing which raises a NameError when invoked.
+
+If refinements (an experimental feature) are active, the method lookup changes. See the refinements documentation for details.
 
