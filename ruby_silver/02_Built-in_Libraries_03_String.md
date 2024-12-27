@@ -2,7 +2,7 @@
 #### sub
 One substitution (or none); returns a new string.
 
-#### !sub 
+#### sub! 
 One substitution (or none); returns self.
 
 #### gsub
