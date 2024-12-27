@@ -19,6 +19,16 @@
 - Keyword arguments: https://noelrappin.com/blog/2024/02/better-know-keyword-arguments/
 
 
+### Built-in libraries
+- Object: https://ruby-doc.org/core-3.1.1/Object.html
+- Numerical classes
+- String
+- Array
+- Hash
+- Kernel
+- Enumerable
+- Comparable
+
 ## Practice Links
 - https://rex.libertyfish.co.jp/
 - https://gist.github.com/m-haramoto/121dc43453661816f4eef8fe15f86827#string-1-20%E5%95%8F
