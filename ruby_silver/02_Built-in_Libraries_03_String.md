@@ -27,6 +27,22 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 - \` corresponds to $`, which contains string before match.
 - + corresponds to $+, which contains last capture group.
 
+- . compare with single character
+- [] [] any character in the range
+- [^..] not any character in the range
+- a-z from a to z
+- \w match with any word character
+- \W match with any non-word character
+- \s match with any whitespace character
+- \S match with any non-whitespace character
+- \d match with any digit character
+- \D match with any non-digit character
+- \A match with the beginning of the string
+- \Z match with the end of the string
+- \z match with the end of the string
+- \b match with a word boundary
+
+
 #### Hash replacement
 If argument replacement is a hash, and pattern matches one of its keys, the replacing string is the value for that key:
 ```ruby

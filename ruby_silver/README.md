@@ -28,6 +28,8 @@
 - Kernel
 - Enumerable
 - Comparable
+- File
+- IO: https://ruby-doc.org/3.4.1/IO.html
 
 ## Practice Links
 - https://rex.libertyfish.co.jp/

@@ -4,6 +4,19 @@
 
 ### if expression
 ### unless expression
+Note: Cannot use unless expression with elsif expression
+```ruby
+unless a == 1
+  puts "a is not 1"
+elsif a == 2
+  puts "a is 2"
+else
+  puts "a is not 1 or 2"
+end
+
+=> Error: syntax error, unexpected elsif, expecting end
+```
+
 ### if-elsif-else expression
 ### short-if expression (aka ternary operator)
 ### case expression

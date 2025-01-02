@@ -38,6 +38,9 @@ h = Hash.new
 h # => {}
 h.class # => Hash
 
+h = Hash({})
+h # => {}
+
 h = Hash[]
 h # => {}
 
@@ -236,4 +239,11 @@ h.default_proc.class # => Proc
 h.default_proc = proc { |hash, key| "Default value for #{key.inspect}" }
 h.default_proc.class # => Proc
 ```
+
+### Methods
+#### destruction
+- clear
+
+#### Non-destructive
+- merge
 

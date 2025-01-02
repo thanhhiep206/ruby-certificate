@@ -84,5 +84,11 @@ Returns self.
 #### step
 Invokes the given block with the sequence of specified numbers.
 
+#### upto
+Returns all the numbers from a given number to number itself.
+```ruby
+1.upto(10) { |i| print i, " " }
+=> 1 2 3 4 5 6 7 8 9 10
+```
 
 
