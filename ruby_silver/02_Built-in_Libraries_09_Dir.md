@@ -1,0 +1,12 @@
+### Public Class Methods
+- pwd
+- chdir
+- children
+- chroot
+- rmdir
+- empty?
+- exist?
+- entries
+- mkdir
+- mktmpdir
+- delete

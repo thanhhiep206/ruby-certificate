@@ -246,4 +246,10 @@ h.default_proc.class # => Proc
 
 #### Non-destructive
 - merge
+- invert
+Return a new hash created by using the values from the original hash as keys, and the keys as values.
+```ruby
+h = { "n" => 100, "m" => 100, "y" => 300, "d" => 200, "a" => 0 }
+h.invert   #=> {0=>"a", 100=>"m", 200=>"d", 300=>"y"}
+```
 

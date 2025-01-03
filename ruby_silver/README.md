@@ -30,6 +30,7 @@
 - Comparable
 - File: https://docs.ruby-lang.org/en/master/File.html
 - IO: https://ruby-doc.org/3.4.1/IO.html
+- Dir: https://docs.ruby-lang.org/en/master/Dir.html
 
 ## Practice Links
 - https://rex.libertyfish.co.jp/

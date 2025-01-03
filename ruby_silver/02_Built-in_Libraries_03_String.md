@@ -168,3 +168,12 @@ Returns a new String containing other_string concatenated to self:
 ```ruby
 "Hello from " + self.to_s # => "Hello from main"
 ```
+
+### Methods for Querying
+#### index
+Returns the index of the first occurrence of the given substring or pattern (regexp) in str. Returns nil if not found. If the second parameter is present, it specifies the position in the string to begin the search.
+```ruby
+"hello".index('e') # => 1
+"hello".index('e', 2) # => nil
+```
+

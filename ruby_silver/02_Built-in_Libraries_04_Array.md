@@ -14,6 +14,9 @@ An array can also be created by calling Array.new with zero, one (the initial si
 Array.new # => []
 Array.new(3) # => [nil, nil, nil]
 Array.new(3, 'abc') # => ['abc', 'abc', 'abc']
+
+(1..3).to_a # => [1, 2, 3]
+(1...3).to_a # => [1, 2]
 ```
 
 ### Adding Items to Arrays
@@ -59,6 +62,13 @@ a = [1, nil, 2, nil, 3]
 a.compact # => [1, 2, 3]
 ```
 
+#### delete_if = reject!
+Deletes every element of self for which block evaluates to true.
+```ruby
+scores = [ 97, 42, 75 ]
+scores.delete_if {|score| score < 80 }   #=> [97]
+```
+
 ### Iterating over Arrays
 #### each
 #### reverse_each
@@ -72,4 +82,27 @@ arr.select {|a| a > 3}       #=> [4, 5, 6]
 arr.reject {|a| a < 3}       #=> [3, 4, 5, 6]
 arr.drop_while {|a| a < 4}   #=> [4, 5, 6]
 arr                          #=> [1, 2, 3, 4, 5, 6]
+```
+
+- flatten
+Returns a new array that is a one-dimensional flattening of self (recursively).
+```ruby
+a = [ 1, [2, [3, [4, 5]]], 6, [[[7, 8], 9]] ]
+a.flatten # => [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+- flatten!
+Flattens self in place.
+```ruby
+a = [ 1, [2, [3, [4, 5]]], 6, [[[7, 8], 9]] ]
+a.flatten! # => [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+- each_cons
+Iterates over the array in groups of length n, passing each group as a list to the block.
+```ruby
+a = [1, 2, 3, 4]
+a.each_cons(3) { |cons| p cons }
+# => [1, 2, 3]
+# => [2, 3, 4]
 ```
