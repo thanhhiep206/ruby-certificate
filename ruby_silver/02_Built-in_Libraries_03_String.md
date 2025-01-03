@@ -128,6 +128,7 @@ Removes trailing whitespace; returns self if any changes, nil otherwise.
 Removes leading and trailing whitespace; returns self if any changes, nil otherwise.
 ```ruby
 "  hello  ".strip! # => "hello"
+"Liberty Fish   \r\n".strip! # => "Liberty Fish"
 ```
 
 #### chomp!

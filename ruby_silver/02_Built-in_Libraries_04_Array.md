@@ -17,6 +17,8 @@ Array.new(3, 'abc') # => ['abc', 'abc', 'abc']
 
 (1..3).to_a # => [1, 2, 3]
 (1...3).to_a # => [1, 2]
+
+hoge = *"a" # => ["a"]
 ```
 
 ### Adding Items to Arrays
@@ -105,4 +107,24 @@ a = [1, 2, 3, 4]
 a.each_cons(3) { |cons| p cons }
 # => [1, 2, 3]
 # => [2, 3, 4]
+```
+
+- product
+Returns an array of all combinations of elements from all arrays.
+```ruby
+[1,2,3].product([4,5]) # => [[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]]
+```
+
+- tranpose
+Returns a new array by transposing self with other arrays.
+```ruby
+a = [[1,2], [3,4], [5,6]]
+a.transpose # => [[1, 3, 5], [2, 4, 6]]
+```
+
+- slice
+Returns a shallow copy of a portion of an array.
+```ruby
+a = [1, 2, 3, 4, 5, 6]
+a.slice(0, 3) # => [1, 2, 3]
 ```

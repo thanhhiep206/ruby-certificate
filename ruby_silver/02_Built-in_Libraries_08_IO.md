@@ -30,7 +30,10 @@ The first argument must be a string that is the path to a file.
 
 - close
 - each
-- eof
+
+- eof?
+Returns true if the stream is at the end of the file.
+
 - gets
 - read
 - readline
@@ -40,3 +43,11 @@ The first argument must be a string that is the path to a file.
 - to_io
 - to_path
 
+
+### Constant
+- SEEK_CUR
+Seek from the current position.
+- SEEK_END
+Seek from the end of the file.
+- SEEK_SET
+Seek from the beginning of the file.
