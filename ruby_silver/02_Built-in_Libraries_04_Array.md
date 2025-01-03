@@ -23,6 +23,9 @@ Will add a new item to the beginning of an array.
 ```ruby
 a = [1, 2, 3]
 a.unshift(0) # => [0, 1, 2, 3]
+
+a = [1, 2, 3]
+a.unshift # => [1, 2, 3]
 ```
 
 #### insert

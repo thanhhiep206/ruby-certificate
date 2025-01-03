@@ -28,7 +28,7 @@
 - Kernel
 - Enumerable
 - Comparable
-- File
+- File: https://docs.ruby-lang.org/en/master/File.html
 - IO: https://ruby-doc.org/3.4.1/IO.html
 
 ## Practice Links

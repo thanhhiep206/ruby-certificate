@@ -58,5 +58,9 @@ Passes each entry in enum to block. Returns the first for which block is not fal
 (1..100).find          { |i| i % 5 == 0 && i % 7 == 0 }   #=> 35
 ```
 
-#### 
-...
+#### partition
+Returns two arrays, the first containing the elements of enum for which the block evaluates to true, the second containing the rest.
+```ruby
+(1..6).partition { |i| i.even? } # => [[2, 4, 6], [1, 3, 5]]
+```
+
