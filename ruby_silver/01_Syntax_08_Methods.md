@@ -78,14 +78,9 @@ Comparison—Returns -1, 0, +1 or nil depending on whether module includes other
 Returns nil if module has no relationship with other_module, if other_module is not a module, or if the two values are incomparable.
 
 #### ==, equal?, eql?
-- obj == other → true or falseclick to toggle source
-**==** returns true only if obj and other are the same object
-This method is overridden in descendant classes to provide class-specific meaning.
-- equal?(other) → true or false
-**equal?** method should never be overridden by subclasses as it is used to determine object identity 
-**a.equal?(b) if and only if a is the same object as b**
-- eql?(other) → true or false
-The eql? method returns true if obj and other refer to the same hash key
+- ==: Returns true if obj and other have the same value.
+- equal?: Returns true if obj and other are the same object (memory reference: object_id)
+- eql?: Returns true if obj and other have the same value and data type.
 
 ```ruby
 "hello" == "hello"  # true (Giá trị giống nhau)
