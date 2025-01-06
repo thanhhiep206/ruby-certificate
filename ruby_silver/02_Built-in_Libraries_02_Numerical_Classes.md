@@ -91,4 +91,15 @@ Returns all the numbers from a given number to number itself.
 => 1 2 3 4 5 6 7 8 9 10
 ```
 
+#### to_s
+Returns the string representation of self.
+```ruby
+1.to_s
+=> "1"
 
+7.to_s(2)
+=> "111"
+
+7.to_s(3)
+=> "21"
+```

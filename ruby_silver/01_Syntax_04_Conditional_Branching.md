@@ -37,3 +37,12 @@ The until statement is similar to the while statement in functionality. Unlike t
 
 ### Keywords
 #### return
+
+
+### Range condition
+#### Flip Flop
+It checks whether the current value of d falls between two conditions:
+```ruby
+10.times { |d| print d == 3..d == 5 ? "T" : "F" }
+=> FFFTTTFFFF
+```
