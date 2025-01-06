@@ -19,7 +19,7 @@
 
 -  %j - Day of the year (001..366)
 
-###Time (Hour, Minute, Second, Subsecond):
+### Time (Hour, Minute, Second, Subsecond):
 - %H - Hour of the day, 24-hour clock, zero-padded (00..23)
 - %k - Hour of the day, 24-hour clock, blank-padded ( 0..23)
 - %I - Hour of the day, 12-hour clock, zero-padded (01..12)
