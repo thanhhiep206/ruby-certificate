@@ -3,10 +3,10 @@
 - chdir
 - children
 - chroot
-- rmdir
 - empty?
 - exist?
 - entries
 - mkdir
 - mktmpdir
+- rmdir
 - delete

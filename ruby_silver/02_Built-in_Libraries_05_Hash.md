@@ -243,6 +243,12 @@ h.default_proc.class # => Proc
 ### Methods
 #### destruction
 - clear
+- update
+Returns a new hash created by merging the original hash with the argument hash.
+```ruby
+h = { "n" => 100, "m" => 100, "y" => 300, "d" => 200 }
+h.update({"a" => 0 }) # => {"n"=>100, "m"=>100, "y"=>300, "d"=>200, "a"=>0}
+```
 
 #### Non-destructive
 - merge
@@ -253,3 +259,9 @@ h = { "n" => 100, "m" => 100, "y" => 300, "d" => 200, "a" => 0 }
 h.invert   #=> {0=>"a", 100=>"m", 200=>"d", 300=>"y"}
 ```
 
+- member
+Returns true if the given key is present in the hash.
+```ruby
+h = { "n" => 100, "m" => 100, "y" => 300, "d" => 200, "a" => 0 }
+h.member?("a") # => true
+```

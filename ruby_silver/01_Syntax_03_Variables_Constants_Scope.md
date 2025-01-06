@@ -43,3 +43,12 @@ x = 10
 end
 puts x #=> 10
 ```
+
+- Initialize variables
+```ruby
+a = 1
+if a > 1
+  b = 5
+end
+p b  # => nil
+```

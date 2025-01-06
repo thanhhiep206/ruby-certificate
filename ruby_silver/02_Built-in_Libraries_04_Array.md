@@ -84,6 +84,9 @@ arr.select {|a| a > 3}       #=> [4, 5, 6]
 arr.reject {|a| a < 3}       #=> [3, 4, 5, 6]
 arr.drop_while {|a| a < 4}   #=> [4, 5, 6]
 arr                          #=> [1, 2, 3, 4, 5, 6]
+
+# Range selection, fist argument is the index, second argument is length
+arr[1,3] #=> [2, 3, 4]
 ```
 
 - flatten
@@ -135,4 +138,11 @@ Returns an array of arrays, which combines corresponding elements from self and 
 a = [1, 2, 3]
 b = [4, 5, 6]
 a.zip(b) # => [[1, 4], [2, 5], [3, 6]]
+```
+
+- scan
+Returns an array of all items in self for which pattern === item.
+```ruby
+a = "hello world"
+a.scan(/[aeiou]/) # => ["e", "o", "o"]
 ```
