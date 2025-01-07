@@ -202,3 +202,34 @@ You can write and execute a shell command with %x:
 ```ruby
 %x(echo 1) # => "1\n"
 ```
+
+### Here Document
+```ruby
+a = <<ENDD
+Ruby
+Php
+END
+ENDD
+puts a #=> Ruby\nPhp\nEND\n
+```
+
+if a code in '' will be executed as a code
+```ruby
+s1 = 'Ruby'
+s2 = 'Php'
+a = <<'END'
+#{s1}
+#{s2}
+END
+puts a #=> "\#{s1}\n\#{s2}\n"
+```
+
+can use whitespace in here document
+```ruby
+a = <<-END
+  Ruby
+  Php
+END
+puts a #=> "  Ruby\n  Php\n"
+```
+
