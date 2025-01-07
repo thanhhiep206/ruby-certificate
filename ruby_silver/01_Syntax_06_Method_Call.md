@@ -112,6 +112,15 @@ The default value does not need to appear first, but arguments with defaults mus
 def add_values(a = 1, b = 2, c)
   a + b + c
 end
+
+# a = 1, b = 2, c = 3
+add_values(3) # => 6
+
+# a = 3, b = 2, c = 4
+add_values(3, 4) # => 9
+
+# a = 3, b = 4, c = 5
+add_values(3, 4, 5) # => 12
 ```
 
 This will raise a SyntaxError:

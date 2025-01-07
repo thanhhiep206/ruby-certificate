@@ -25,12 +25,14 @@ Read/Write Modes for \File To Be Created
 | 'a'  |   Error  |    -     | End only |     0     |
 | 'w+' | Anywhere |    0     | Anywhere |     0     |
 | 'a+' | Anywhere |    0     | End only |    End    |
+| 'r+' | Anywhere |    0     | Anywhere |     0     |
 |------|----------|----------|----------|-----------|
 
 - w: open write only mode, content will be removed when opened or seeked
 - w+: open read/write mode, content will be removed when opened or seeked
 - a: open write only mode, content will be added to the end of the file when opened
 - a+: open read/write mode, content will be added to the end of the file when opened, you can change the file position with **seek**
+- r+: open read/write mode, you can change the file position with **seek**
 
 ### Creating
 #### new
