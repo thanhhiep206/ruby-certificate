@@ -93,6 +93,13 @@ A Symbol represents a name inside the ruby interpreter
 - %w and %W: String-Array Literals
 - %i and %I: Symbol-Array Literals
 
+```ruby
+%w(foo bar baz) # => ["foo", "bar", "baz"]
+
+# use backslash to embed spaces in the strings
+%w(foo\ bar baz\ bat) # => ["foo bar", "baz bat"]
+```
+
 ### Hash Literals
 A hash is created using key-value pairs between { and }:
 Both the key and value may be any object.

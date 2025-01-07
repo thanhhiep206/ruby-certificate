@@ -99,8 +99,10 @@ Removes all content, so that self is empty; returns self.
 #### slice!, []=
 Removes a substring determined by a given index, start/length, range, regexp, or substring.
 ```ruby
-"edadsad".slice!(1,  3)
-# => "dad"
+s = "edadsad"
+s.slice!(1,  3)
+puts s
+# => "esad"
 ```
 
 #### squeeze!
@@ -110,6 +112,8 @@ Removes contiguous duplicate characters; returns self.
 Removes characters as determined by the intersection of substring arguments.
 ```ruby
 "hello".delete!("el") # => "ho"
+
+"123456789".delete!("1-46-") # => "5789"
 ```
 
 #### lstrip!
@@ -136,6 +140,9 @@ Removes trailing newline characters; returns self if any changes, nil otherwise.
 ```ruby
 "hello\n".chomp! # => "hello"
 "hello".chomp!   # => "hello"
+
+# remove all newline characters
+"12\r\n\r\n".chomp!("") # => "12"
 ```
 
 #### chop!
@@ -143,6 +150,22 @@ Removes the last character; returns self if any changes, nil otherwise.
 ```ruby
 "hello".chop! # => "hell"
 "hello!".chop! # => "hello"
+```
+
+#### split
+Splits self into substrings based on a delimiter, returning an array of these substrings.
+```ruby
+"hello".split # => ["hello"]
+"hello world".split # => ["hello", "world"]
+"hello world".split(' ') # => ["hello", "world"]
+"A.S.A.P".split('.', 3) # => ["A", "S", "A.P"]
+```
+
+#### just
+```ruby
+"ab".rjust(6, "*") # => "****ab"
+"ab".ljust(6, "*") # => "ab****"
+"ab".center(6, "*") # => "**ab**"
 ```
 
 ### Methods for Converting to New String
@@ -178,7 +201,21 @@ Returns the index of the first occurrence of the given substring or pattern (reg
 "hello".index('e', 2) # => nil
 ```
 
-### to_i
+#### count
+Returns the number of characters in self.
+```ruby
+"hello".count # => 5
+
+# count with substring
+"hello".count('e') # => 1
+
+# This specifies a range of characters from 'a' to 'c' (inclusive), and count computes how many characters in the string fall within this range.
+"abbxxcc".count('a-c') # => 5
+```
+
+### Convert to Integer
+
+#### to_i
 Returns the integer value of self.
 ```ruby
 "123".to_i # => 123
@@ -191,5 +228,14 @@ Returns the integer value of self.
 "123".to_i(36) # => 4359
 
 "+5-3".to_i # => 5
+
+"ABC".to_i # => 0
+```
+
+#### ord
+Returns the integer ordinal of a one-character string.
+```ruby
+"A".ord # => 65
+"a".ord # => 97
 ```
 
