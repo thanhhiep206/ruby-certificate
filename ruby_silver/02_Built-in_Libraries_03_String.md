@@ -114,6 +114,9 @@ Removes characters as determined by the intersection of substring arguments.
 "hello".delete!("el") # => "ho"
 
 "123456789".delete!("1-46-") # => "5789"
+
+# Return a copy of the string with all characters in the intersection of its arguments deleted.
+"01234".delete!("0-2", "1-3", "2-4") # => "0134"
 ```
 
 #### lstrip!

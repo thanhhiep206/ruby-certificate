@@ -55,6 +55,9 @@ Will remove the first item from an array and return it.
 a = [1, 2, 3]
 a.shift # => 1
 a # => [2, 3]
+
+a.shift(2) # => [1, 2]
+a # => [3]
 ```
 
 #### compact
@@ -69,6 +72,13 @@ Deletes every element of self for which block evaluates to true.
 ```ruby
 scores = [ 97, 42, 75 ]
 scores.delete_if {|score| score < 80 }   #=> [97]
+```
+
+#### delete
+Deletes all items from self that are equal to item.
+```ruby
+a = [1, 2, 3, 4, 2, 1]
+a.delete(2) # => [1, 3, 4, 1]
 ```
 
 ### Iterating over Arrays
@@ -146,3 +156,20 @@ Returns an array of all items in self for which pattern === item.
 a = "hello world"
 a.scan(/[aeiou]/) # => ["e", "o", "o"]
 ```
+
+- fill
+Fills the array with the given value.
+```ruby
+a = [1, 2, 3]
+a.fill(0) # => [0, 0, 0]
+```
+
+- index
+Returns the index of the first object in self such that the object is == to the argument.
+```ruby
+a = "ABCABCABC"
+a.index("ABC", 4) => 6
+
+# First argument is the substring, second argument is the index to start searching from
+```
+
