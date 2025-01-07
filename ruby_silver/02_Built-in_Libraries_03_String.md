@@ -178,3 +178,18 @@ Returns the index of the first occurrence of the given substring or pattern (reg
 "hello".index('e', 2) # => nil
 ```
 
+### to_i
+Returns the integer value of self.
+```ruby
+"123".to_i # => 123
+```
+
+```ruby
+"123".to_i(2) # => 5
+"123".to_i(8) # => 83
+"123".to_i(16) # => 291
+"123".to_i(36) # => 4359
+
+"+5-3".to_i # => 5
+```
+
