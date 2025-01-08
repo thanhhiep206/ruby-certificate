@@ -41,6 +41,7 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 - \Z match with the end of the string
 - \z match with the end of the string
 - \b match with a word boundary
+- .* match with any character zero or more times
 
 
 #### Hash replacement
