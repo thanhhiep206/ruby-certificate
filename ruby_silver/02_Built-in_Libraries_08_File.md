@@ -33,6 +33,7 @@ Read/Write Modes for \File To Be Created
 - a: open write only mode, content will be added to the end of the file when opened
 - a+: open read/write mode, content will be added to the end of the file when opened, you can change the file position with **seek**
 - r+: open read/write mode, you can change the file position with **seek**
+- r: is default mode, open read only mode
 
 ### Creating
 #### new
