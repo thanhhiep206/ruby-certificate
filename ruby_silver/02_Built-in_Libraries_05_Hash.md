@@ -183,6 +183,12 @@ reviews[book2] = 'Nice and compact!'
 reviews.length #=> 1
 ```
 
+#### Check if a key is in the hash
+- include?
+- member?
+- has_key?
+- key?
+
 #### Default Values
 The methods [], values_at and dig need to return the value associated to a certain key. When that key is not found, that value will be determined by its default proc (if any) or else its default (initially ‘nil`).
 
@@ -259,9 +265,24 @@ h = { "n" => 100, "m" => 100, "y" => 300, "d" => 200, "a" => 0 }
 h.invert   #=> {0=>"a", 100=>"m", 200=>"d", 300=>"y"}
 ```
 
+- reject
+Returns a new hash consisting of entries for which the block returns false.
+```ruby
+h = { "n" => 100, "m" => 100, "y" => 300, "d" => 200, "a" => 0 }
+h.reject { |key, value| key.start_with?("m") } # => {"n"=>100, "y"=>300, "d"=>200, "a"=>0}
+h.reject { |key| key.start_with?("m") } # => {"n"=>100, "y"=>300, "d"=>200, "a"=>0}
+```
+
 - member
 Returns true if the given key is present in the hash.
 ```ruby
 h = { "n" => 100, "m" => 100, "y" => 300, "d" => 200, "a" => 0 }
 h.member?("a") # => true
+```
+
+- each_pair
+Iterates over the hash, yielding each key-value pair to the block.
+```ruby
+h = { "n" => 100, "m" => 100, "y" => 300, "d" => 200, "a" => 0 }
+h.each_pair { |key, value| puts "#{key} => #{value}" }
 ```
