@@ -94,12 +94,12 @@ Read/Write Modes for \File To Be Created
 | open       | open                            | open                                           |
 | basename   | read                            | read                                           |
 | dirname    | empty?                          | readlines                                      |
-| extname    | entries                         | gets                                           |
-| path       | exist?                          | getc                                           |
+| extname    | entries                         | gets (read a line)                             |
+| path       | exist?                          | getc (read a character)                        |
 | join       | glob                            | readline                                       |
 | split      | home                            | readchar                                       |
 | atime (time of last access)     | tell       | print                                          |
-| ctime (time of last metadata change) | fileno | prints                                         |
+| ctime (time of last metadata change) | fileno | prints                                        |
 | directory? | inspect                         | write                                          |
 | exist?     | positioning(pos=, rewind, seek) | positioning(lineno, pos, reopen, rewind, seek) |
 | file?      | close                           | close                                          |
