@@ -98,8 +98,8 @@ Read/Write Modes for \File To Be Created
 | path       | exist?                          | getc                                           |
 | join       | glob                            | readline                                       |
 | split      | home                            | readchar                                       |
-| atime (time of last access)     | tell                            | print                                          |
-| ctime (time of last metadata change)      | fileno                          | prints                                         |
+| atime (time of last access)     | tell       | print                                          |
+| ctime (time of last metadata change) | fileno | prints                                         |
 | directory? | inspect                         | write                                          |
 | exist?     | positioning(pos=, rewind, seek) | positioning(lineno, pos, reopen, rewind, seek) |
 | file?      | close                           | close                                          |
