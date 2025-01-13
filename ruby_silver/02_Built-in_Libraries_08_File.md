@@ -105,6 +105,6 @@ Read/Write Modes for \File To Be Created
 | file?      | close                           | close                                          |
 | empty?     | pwd                             | eof?                                           |
 | size       | chroot                          | flush                                          |
-| chmode     | chdir                           | SEEK_CUR                                       |
+| chmode     | path                            | SEEK_CUR                                       |
 | chown      | chdir                           | SEEK_END                                       |
-| split(file_name) | path                      | SEEK_SET                                       |
+| delete     | delete                          | SEEK_SET                                       |
