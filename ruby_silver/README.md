@@ -35,7 +35,7 @@
 ## Practice Links
 - https://rex.libertyfish.co.jp/
 - https://gist.github.com/m-haramoto/121dc43453661816f4eef8fe15f86827#string-1-20%E5%95%8F
-- https://diver.diveintocode.jp/
+- https://diver.diveintocode.jp/dive_into_exam/4
 - https://gist.github.com/sean2121/945035ef2341f0c39bf40762cd8531e0
 - https://learn.viblo.asia/vi/courses/ruby-association-certified-ruby-programmer-silver-ruby-silver-wMvbmOeYAl
 - https://github.com/ruby-association/prep-test/blob/version3/silver_answers.md
