@@ -88,5 +88,23 @@ Read/Write Modes for \File To Be Created
 - truncate
 - unlink
 
-
-
+| File       | Dir                             | IO                                             |
+|------------|---------------------------------|------------------------------------------------|
+| new        | new                             | new                                            |
+| open       | open                            | open                                           |
+| basename   | read                            | read                                           |
+| dirname    | empty?                          | readlines                                      |
+| extname    | entries                         | gets                                           |
+| path       | exist?                          | getc                                           |
+| join       | glob                            | readline                                       |
+| split      | home                            | readchar                                       |
+| atime      | tell                            | print                                          |
+| ctime      | fileno                          | prints                                         |
+| directory? | inspect                         | write                                          |
+| exist?     | positioning(pos=, rewind, seek) | positioning(lineno, pos, reopen, rewind, seek) |
+| file?      | close                           | close                                          |
+| empty?     | chdir                           | eof?                                           |
+| size       | chroot                          | flush                                          |
+| chmode     | chdir                           | SEEK_CUR                                       |
+| chown      | chdir                           | SEEK_END                                       |
+| split(file_name) | path                      | SEEK_SET                                       |
