@@ -108,3 +108,5 @@ Read/Write Modes for \File To Be Created
 | chmode     | path                            | SEEK_CUR                                       |
 | chown      | chdir                           | SEEK_END                                       |
 | delete     | delete                          | SEEK_SET                                       |
+| rename     |                                 | altime (time of last access)                   |
+| expand_path |                                |                                                |
