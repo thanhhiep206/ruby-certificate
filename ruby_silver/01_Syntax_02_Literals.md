@@ -240,3 +240,11 @@ END
 puts a #=> "  Ruby\n  Php\n"
 ```
 
+| Method    | Description                                                                                                       |
+|-----------|-------------------------------------------------------------------------------------------------------------------|
+| <<END     | This creates a plain heredoc where string interpolation is allowed                                                |
+| <<'END'   | This creates a plain heredoc where string interpolation is not allowed                                            |
+| <<-END    | This creates a plain heredoc where string interpolation is allowed and the ending delimiter (END) can be indented |
+| <<-'END'  | This is an indented heredoc, but string interpolation is not allowed                                              |
+| <<"END"   | String interpolation is allowed, and there is no special handling for indentation                                 |
+| <<-"END"  | This is the same as <<-END. String interpolation is allowed, and the ending delimiter can be indented             |
