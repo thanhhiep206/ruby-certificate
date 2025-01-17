@@ -49,6 +49,7 @@
 - https://rex.libertyfish.co.jp/
 - https://learn.viblo.asia/courses/ruby-association-certified-ruby-programmer-gold-ruby-gold-4openRe7Az
 - https://gist.github.com/m-haramoto/121dc43453661816f4eef8fe15f86827#string-1-20%E5%95%8F
+- https://gist.github.com/sean2121/0969a089fc5cdf02dfba7b14ba331c64
 
 - https://github.com/dazhizhang/ruby-rails/blob/master/Metaprogramming%20Ruby%2C%202nd%20Edition.pdf (Out date)
 
