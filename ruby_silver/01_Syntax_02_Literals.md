@@ -60,6 +60,7 @@ Any combination of adjacent single-quote, double-quote, percent strings will be 
 ```ruby
 %q{a} 'b' "c" #=> "abc"
 "a" 'b' %q{c} #=> NameError: uninitialized constant q
+"a" %q{c} 'b' #=> Error: syntax error, unexpected 'b'
 ```
 
 ### Symbol Literals
