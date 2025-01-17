@@ -50,6 +50,8 @@
 - https://learn.viblo.asia/courses/ruby-association-certified-ruby-programmer-gold-ruby-gold-4openRe7Az
 - https://gist.github.com/m-haramoto/121dc43453661816f4eef8fe15f86827#string-1-20%E5%95%8F
 
+- https://github.com/dazhizhang/ruby-rails/blob/master/Metaprogramming%20Ruby%2C%202nd%20Edition.pdf (Out date)
+
 ## Exam Registration
 Location: IIG 75 Giang Van Minh, Ba Dinh
 Registration Link: https://www.prometric.com/test-takers/search/ry
