@@ -18,32 +18,6 @@ Mod.instance_methods   #=> [:meth]
 
 ### Public Class Methods
 
-#### constants → array & constants(inherited) → array
-In the first form, returns an array of the names of all constants accessible from the point of call. This list includes the names of all modules and classes defined in the global scope.
-
-```ruby
-Module.constants.first(4)
-   # => [:ARGF, :ARGV, :ArgumentError, :Array]
-
-Module.constants.include?(:SEEK_SET)   # => false
-
-class IO
-  Module.constants.include?(:SEEK_SET) # => true
-end
-```
-
-#### nesting → array
-Returns the list of Modules nested at the point of call.
-```ruby
-module M1
-  module M2
-    $a = Module.nesting
-  end
-end
-$a           #=> [M1::M2, M1]
-$a[0].name   #=> "M1::M2"
-```
-
 #### new → mod & new {|mod| block } → mod
 Creates a new anonymous module. If a block is given, it is passed the module object, and the block is evaluated in the context of this module like module_eval.
 ```ruby
@@ -60,9 +34,6 @@ a.extend(fred)   #=> "my string"
 a.meth1          #=> "hello"
 a.meth2          #=> "bye"
 ```
-
-#### used_modules → array
-Returns an array of all modules used in the current scope. The ordering of modules in the resulting array is not defined.
 
 ### Public Instance Methods
 
@@ -129,36 +100,3 @@ The first form is equivalent to attr_reader. The second form is equivalent to at
 #### attr_accessor (getter and setter)
 #### attr_reader (getter)
 #### attr_writer (setter)
-
-#### class_eval
-class_eval is a Ruby method that allows you to extend or modify a class by executing code in the context of that class
-
-```ruby
-ClassName.class_eval do
-  # Định nghĩa hoặc ghi đè phương thức
-end
-
-ClassName.class_eval("code as string")
-```
-
-#### class_exec
-As class_eval, but executes the code in the context of the current class.
-
-```ruby
-ClassName.class_exec(arg1, arg2, ...) do |param1, param2, ...|
-  # Định nghĩa hoặc thay đổi class sử dụng các tham số
-end
-```
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -18,7 +18,6 @@ end
 ```
 
 ### if-elsif-else expression
-### short-if expression (aka ternary operator)
 ### case expression
 - An alternative to the if-elsif-else expression (above) is the case expression. Case in Ruby supports a number of syntaxes. For example, suppose we want to determine the relationship of a number (given by the variable a) to 5. We could say:
 ```ruby

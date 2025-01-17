@@ -56,6 +56,12 @@ rescue NameError
 rescue
   # handle any StandardError
 end
+
+begin
+  # ...
+rescue *[ArgumentError, NameError]
+  # handle ArgumentError or NameError
+end
 ```
 
 You may retry rescued exceptions:
@@ -92,4 +98,10 @@ else
 ensure
   # ...
 end
+```
+
+Default raise is RuntimeError
+```ruby
+raise "This is an error"
+=> RuntimeError: This is an error
 ```

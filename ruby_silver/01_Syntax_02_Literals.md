@@ -40,25 +40,6 @@ Floating-point numbers may be written as follows
 ```
 These numbers have the same value, 12.34
 
-### Rational Literals
-You can write a Rational number as follows (suffixed r):
-```ruby
-12r         #=> (12/1)
-12.3r       #=> (123/10)
-```
-A Rational number is exact, whereas a Float number may be inexact.
-```ruby
-0.1r + 0.2r #=> (3/10)
-0.1 + 0.2   #=> 0.30000000000000004
-```
-
-### Complex Literals
-You can write a Complex number as follows (suffixed i):
-```ruby
-1i          #=> (0+1i)
-1i * 1i     #=> (-1+0i)
-```
-
 ### String Literals
 The most common way of writing strings is using ":
 ```ruby
@@ -121,18 +102,6 @@ A range represents an interval of values. The range may include or exclude its e
 (..1)   # beginless range, representing infinite sequence from -Infinity to 1
 ```
 
-### Regexp Literals
-A regular expression is created using “/”:
-```ruby
-/my regular expression/
-```
-
-Flag:
-- i: case-insensitive
-- x: ignore whitespace
-- m: multiline
-- o: only match once
-
 ### Lambda Proc Literals
 A lambda proc can be created with ->:
 ```ruby
@@ -140,12 +109,6 @@ A lambda proc can be created with ->:
 # or
 ->(v) { 1 + v }
 ```
-
-### Percent Literals
-- [ and ]
-- ( and )
-- { and }
-- < and >
 
 ### Non-Interpolable String Literals
 You can write a non-interpolable string with %q. The created string is the same as if you created it with single quotes:
@@ -193,21 +156,6 @@ You can write a symbol with %s
 ```ruby
 :foo     # => :foo
 :foo bar # => :"foo bar"
-```
-
-### %r: Regexp Literals
-You can write a regular expression with %r:
-```ruby
-r = %r[foo\sbar]   # => /foo\sbar/
-'foo bar'.match(r) # => #<MatchData "foo bar">
-r = %r[foo\sbar]i  # => /foo\sbar/i
-'FOO BAR'.match(r) # => #<MatchData "FOO BAR">
-```
-
-### %x: Backtick Literals
-You can write and execute a shell command with %x:
-```ruby
-%x(echo 1) # => "1\n"
 ```
 
 ### Here Document

@@ -74,28 +74,6 @@ end
 # Value: 30, Index: 2
 ```
 
-#### extend
-Includes the given modules in the singleton class of self.
-
-```ruby
-module Mod
-  def hello
-    "Hello from Mod.\n"
-  end
-end
-
-class Klass
-  def hello
-    "Hello from Klass.\n"
-  end
-end
-
-k = Klass.new
-k.hello         #=> "Hello from Klass.\n"
-k.extend(Mod)   #=> #<Klass:0x401b3bc8>
-k.hello         #=> "Hello from Mod.\n"
-```
-
 #### freeze
 Prevents further modifications to obj. A FrozenError will be raised if modification is attempted. There is no way to unfreeze a frozen object. See also Object#frozen?.
 

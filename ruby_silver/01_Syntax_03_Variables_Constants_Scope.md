@@ -17,6 +17,7 @@ Type of variables in Ruby:
 - Start with an uppercase letter
 - Use constants to store values that should not be changed (can be changed in some cases but ruby will warn you)
 - Scope is limited to the class or module in which they are defined
+- Constant cannot defined in a block
 
 ### Scope
 - Variables cannot be used outside of the scope in which they are defined
@@ -51,4 +52,10 @@ if a > 1
   b = 5
 end
 p b  # => nil
+```
+
+- Conditional assignment
+```ruby
+a = 2 if 1 == 2
+p a # => nil
 ```
