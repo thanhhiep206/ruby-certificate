@@ -66,3 +66,11 @@ in { data: { user: { id: 42, name: name } } }
   puts name # "Alice"
 end
 ```
+
+- As Patterns (=>): Capture the entire matched object while destructuring.
+```ruby
+case { a: 1, b: 2 }
+in { a: 1, b: => value }
+  puts value # 2
+end
+```
