@@ -76,7 +76,7 @@ Returns a string containing a human-readable representation of object.
 p a: 1, b: 2 # => {:a=>1, :b=>2}
 ```
 
-#### slide_by
+#### slice_by
 Returns an array of arrays that are slices of the original array, with each slice containing the elements from the original array, starting at the specified index, and with the specified length.
 ```ruby
 [1, 2, 3, 4, 5].slide_by(2) # => [[1, 2], [3, 4], [5]]
