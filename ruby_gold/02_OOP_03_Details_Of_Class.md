@@ -131,20 +131,6 @@ class MyClass
 end
 ```
 
-- Refinements
-Refinements are a way to modify the behavior of a class or module without changing the original source code.
-```ruby
-module MyModule
-  refine String do
-    def reverse
-      "reversed"
-    end
-  end
-end
-
-String.new.reverse # => "reversed"
-```
-
 - Freezing objects with freeze.
 ```ruby
 str = "Hello"
