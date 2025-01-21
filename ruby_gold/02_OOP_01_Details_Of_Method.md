@@ -150,30 +150,8 @@ end
 alias_method :old_method, :new_method
 ```
 
-#### Dynamic Method Definition
-```ruby
-define_method(:greet) { |name| "Hello, #{name}" }
-```
-
 ### Metaprogramming with Methods
 #### Hook Methods
-- method_missing for dynamic dispatching.
-```ruby
-class Animal
-  def method_missing method, *args, &block
-    if method.to_s == "fly"
-      puts "Sorry, cows can’t fly!"
-    else
-      super
-    end
-  end
-end
-
-cow = Animal.new
-cow.fly
-"Sorry, cows can’t fly!"
-```
-
 - respond_to_missing? for compatibility.
 ```ruby
 require 'ostruct'

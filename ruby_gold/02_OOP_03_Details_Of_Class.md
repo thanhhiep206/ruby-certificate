@@ -110,11 +110,6 @@ See [Access Control](./02_OOP_02_Access_Control.md)
 ### Singleton Methods and Singleton Classes
 See [Singleton Methods and Singleton Classes](./02_OOP_02_Access_Control.md)
 
-### Metaprogramming
-- method_missing: [method_missing](./02_OOP_02_Access_Control.md#Hook Methods)
-- define_method: [define_method](./02_OOP_02_Access_Control.md#Singleton Methods)
-- Dynamic class creation: [dynamic class creation](./02_OOP_02_Access_Control.md#Dynamic Method Definition)
-
 ### Advanced Topics
 - ObjectSpace and introspection
 ObjectSpace is a module that provides a way to inspect and manipulate the objects in the Ruby runtime.
