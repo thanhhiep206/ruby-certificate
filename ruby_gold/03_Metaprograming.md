@@ -33,6 +33,66 @@ greeter.unknown_method # Raises NoMethodError
 ```
 Always call super for methods you don’t intend to handle.
 
+- Class level method_missing
+```ruby
+class MyClass
+  def self.method_missing(method_name, *arguments, &block)
+    puts "method_missing: #{method_name}"
+  end
+end
+
+MyClass.hoge # => "method_missing: hoge"
+```
+
+- The Class class is the superclass of all class objects in Ruby. If you call an undefined method on a class itself, method_missing in Class is invoked unless overridden.
+```ruby
+class Class
+  def method_missing(id, *args)
+    puts "Class#method_missing"
+  end
+end
+class A
+  def method_missing(id, *args)
+    puts "A#method_missing"
+  end
+end
+class B < A
+  def method_missing(id, *args)
+    puts "B#method_missing"
+  end
+end
+
+B.dummy_method # => "Class#method_missing"
+```
+
+- respond_to_missing? for compatibility.
+```ruby
+require 'ostruct'
+
+class Order
+  def user
+    @_user ||= OpenStruct.new(name: 'Mike', age: 28, occupation: 'slacker')
+  end
+
+  def method_missing(method_name, *arguments, &block)
+    if method_name.to_s =~ /user_(.*)/
+      user.send($1, *arguments, &block)
+    else
+      super
+    end
+  end
+
+  def respond_to_missing?(method_name, include_private = false)
+    method_name.to_s.start_with?('user_') || super
+  end
+end
+
+order = Order.new
+order.user_name => "Mike"
+order.respond_to?(:user_name) => true
+order.method(:user_name) => #<Method: Order#user_name>
+```
+
 ### Defining Methods Dynamically
 #### define_method
 - Define methods dynamically at runtime
@@ -65,6 +125,67 @@ Avoid using eval unless absolutely necessary. It can lead to security vulnerabil
 instance_exec(1, 2) { |a, b| a + b } # => 3
 class_eval(code) # => 5
 ```
+
+#### class_eval
+Evaluate code in the context of a class or module.
+
+- Use class_eval with a block to define methods dynamically.
+```ruby
+class User
+  class_eval do
+    def greet
+      "Hello!"
+    end
+  end
+end
+```
+
+- Use class_eval with a string to evaluate code dynamically.
+```ruby
+class User
+  class_eval("def greet; 'Hello!'; end")
+end
+
+User.new.greet # => "Hello!"
+```
+
+Difference between use a block and a string:
+- Use a block when you need to define multiple methods or when the code is complex.
+- Use a string when you need to evaluate simple code or when the code is short and simple.
+```ruby
+# Use a string will not be able to access the class or module context.
+class C
+  CONST = "Hello, world"
+end
+
+module M
+  C.class_eval(<<-CODE)
+    def awesome_method
+      CONST
+    end
+  CODE
+end
+
+p C.new.awesome_method # => "Hello, world"
+```
+
+```ruby
+# Use a block will be able to access the class or module context.
+class C
+  CONST = "Hello, world"
+end
+
+module M
+  C.class_eval do
+    def awesome_method
+      CONST
+    end
+  end
+end
+
+p C.new.awesome_method # => uninitialized constant M::CONST
+```
+
 
 ### Introspection and Reflection
 #### instance_variable_get and instance_variable_set

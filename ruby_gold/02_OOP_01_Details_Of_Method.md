@@ -56,6 +56,17 @@ def configure(**options)
 end
 ```
 
+```ruby
+def foo(arg1:100, arg2:200)
+  puts arg1
+  puts arg2
+end
+
+option = {arg2: 900}
+
+foo arg1: 200, **option # => 200, 900
+```
+
 #### Variable-length Arguments
 ```ruby
 def sum(*numbers)
@@ -72,6 +83,21 @@ def test(&block)
 end
 
 test { puts "Hello, World!" }
+```
+
+```ruby
+def test(n, &block)
+  block.call
+end
+
+test(5) { puts "Hello, World!" } # => Hello, World!
+```
+
+```ruby
+def test(&block, n)
+  block.call
+end 
+# => syntax error
 ```
 
 ### Method Return Values
@@ -148,38 +174,11 @@ end
 - Using alias and alias_method to create method shortcuts or extend functionality.
 ```ruby
 alias_method :old_method, :new_method
+
+alias_method old_method, new_method
 ```
 
 ### Metaprogramming with Methods
-#### Hook Methods
-- respond_to_missing? for compatibility.
-```ruby
-require 'ostruct'
-
-class Order
-  def user
-    @_user ||= OpenStruct.new(name: 'Mike', age: 28, occupation: 'slacker')
-  end
-
-  def method_missing(method_name, *arguments, &block)
-    if method_name.to_s =~ /user_(.*)/
-      user.send($1, *arguments, &block)
-    else
-      super
-    end
-  end
-
-  def respond_to_missing?(method_name, include_private = false)
-    method_name.to_s.start_with?('user_') || super
-  end
-end
-
-order = Order.new
-order.user_name => "Mike"
-order.respond_to?(:user_name) => true
-order.method(:user_name) => #<Method: Order#user_name>
-```
-
 #### Reflection
 - Listing and inspecting methods with methods, instance_methods, private_methods.
 ```ruby
@@ -225,4 +224,3 @@ Benchmark.bm do |x|
   x.report { expensive_method }
 end
 ```
-

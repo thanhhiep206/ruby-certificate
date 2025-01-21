@@ -27,6 +27,12 @@ puts my_lambda.call(4) # Output: 5
 | Definition Syntax | Proc.new or proc               | -> or lambda                       |
 
 ### Proc Methods
+- []: Allows access to the Proc's code object.
+```ruby
+p = Proc.new { |x| x + 2 }
+puts p[5] # Output: 7
+```
+
 - call: Executes the block with optional arguments.
 ```ruby
 p = Proc.new { |x| x + 2 }
@@ -63,6 +69,26 @@ puts p.parameters.inspect
 ```
 
 ### Use Cases for Procs
+- Shadowing variables:
+```ruby
+foo = Proc.new { |n|
+  n * 3
+}
+
+def foo(n)
+  n ** n
+end
+
+puts foo[2] * 2
+```
+=> The foo method is shadowed by a local variable named foo that references a Proc object.
+This means that within this scope, foo now refers to the Proc, not the method
+
+To call the original foo method (if needed), you can use the self keyword:
+```ruby
+self.foo(2)
+```
+
 - Callbacks: Pass a Proc to another method for execution.
 ```ruby
 def execute_callback(callback)

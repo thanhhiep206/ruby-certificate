@@ -64,6 +64,12 @@ module MyModule
   end
 end
 
+module MyModule2
+  def my_method
+    puts "MyModule2"
+  end
+end
+
 class ParentClass
   def my_method
     puts "ParentClass"
@@ -78,10 +84,11 @@ end
 
 class MyClass < ParentClass
   include MyModule
+  include MyModule2
   prepend PrependModule
 end
 
-MyClass.ancestors # => [PrependModule, MyClass, MyModule, ParentClass, Object, Kernel, BasicObject]
+MyClass.ancestors # => [PrependModule, MyClass, MyModule2, MyModule, ParentClass, Object, Kernel, BasicObject]
 MyClass.new.my_method # => "PrependModule"
 ```
 

@@ -19,6 +19,37 @@ class MyClass
 end
 ```
 
+- In module, extend self will make the module methods as class methods.
+```ruby
+module Parent
+  def method_1
+    __method__
+  end
+end
+
+module Child
+  extend self
+  include Parent
+end
+
+p Child::method_1 # => "method_1"
+```
+
+- In module, extend will make the module methods as class methods.
+```ruby
+module Parent
+  def method_1
+    __method__
+  end
+end
+
+module Child
+  extend Parent
+end
+
+p Child::method_1 # => "method_1"
+```
+
 #### Namespaces
 - Modules can encapsulate methods, constants, or classes to avoid naming collisions.
 ```ruby

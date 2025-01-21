@@ -107,8 +107,51 @@ See [Modules and Mixins](./02_OOP_02_Access_Control.md#Modules)
 ### Access Control: public, protected, private
 See [Access Control](./02_OOP_02_Access_Control.md)
 
-### Singleton Methods and Singleton Classes
-See [Singleton Methods and Singleton Classes](./02_OOP_02_Access_Control.md)
+### Singleton Methods
+See [Singleton Methods](./02_OOP_02_Access_Control.md)
+
+### Singleton Classes
+Singleton Classes is a class that is created for a specific object.
+
+```ruby
+class MyClass
+  def my_method
+    puts "MyClass"
+  end
+end
+
+MyClass.singleton_class.define_method(:my_method) { puts "SingletonClass" }
+MyClass.my_method # => "SingletonClass"
+```
+
+```ruby
+class C
+  class << C
+    def hoge
+      'Hi'
+    end
+  end
+end
+
+p C.hoge # => "Hi"
+```
+
+### attr_*
+- attr_* cannot be use super.
+```ruby
+class MyClass
+  attr_accessor :name
+
+  def name
+    "Mr. #{super}"
+  end
+end
+
+obj = MyClass.new
+obj.name = "John"
+p obj.name # => super: no superclass method `name' for an instance of MyClass
+```
+
 
 ### Advanced Topics
 - ObjectSpace and introspection

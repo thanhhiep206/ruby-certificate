@@ -41,3 +41,21 @@ BODY
 puts data[:title]
 puts data[:body]
 ```
+
+To call a method on a heredoc place it after the opening identifier
+```ruby
+puts(<<-ONE)
+content for heredoc one
+ONE
+
+puts(<<-ONE
+content for heredoc one
+ONE
+)
+
+puts(<<-ONE, <<-TWO)
+content for heredoc one
+ONE
+content for heredoc two
+TWO
+```
