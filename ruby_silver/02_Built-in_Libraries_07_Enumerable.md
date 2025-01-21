@@ -75,3 +75,21 @@ Returns a string containing a human-readable representation of object.
 ```ruby
 p a: 1, b: 2 # => {:a=>1, :b=>2}
 ```
+
+#### slice_by
+Returns an array of arrays that are slices of the original array, with each slice containing the elements from the original array, starting at the specified index, and with the specified length.
+```ruby
+[1, 2, 3, 4, 5].slide_by(2) # => [[1, 2], [3, 4], [5]]
+```
+
+#### slice_before
+Returns an enumerator that yields each element of the original array, grouped by the return value of the block.
+```ruby
+[1, 2, 3, 4, 5].slice_before { |n| n.even? } # => #<Enumerator: [1, 2, 3, 4, 5]:slice_before>
+```
+
+#### slice_after
+Returns an enumerator that yields each element of the original array, grouped by the return value of the block.
+```ruby
+[1, 2, 3, 4, 5].slice_after { |n| n.even? } # => #<Enumerator: [1, 2, 3, 4, 5]:slice_after>
+```
