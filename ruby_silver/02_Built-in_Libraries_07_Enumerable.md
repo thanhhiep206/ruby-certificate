@@ -64,3 +64,14 @@ Returns two arrays, the first containing the elements of enum for which the bloc
 (1..6).partition { |i| i.even? } # => [[2, 4, 6], [1, 3, 5]]
 ```
 
+#### union
+Returns an array by joining the elements of the given arrays.
+```ruby
+[1, 2, 3].union([3, 4, 5]) # => [1, 2, 3, 4, 5]
+```
+
+#### p
+Returns a string containing a human-readable representation of object.
+```ruby
+p a: 1, b: 2 # => {:a=>1, :b=>2}
+```
