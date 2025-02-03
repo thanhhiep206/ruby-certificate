@@ -26,7 +26,7 @@
 - Class inheritance
 - Details of modules
 - Module#prepend
-- Refinements
+- Refinements: https://docs.ruby-lang.org/en/2.4.0/syntax/refinements_rdoc.html
 
 ### Metaprograming
 - e.g., eval, define_method, instance_variable_get

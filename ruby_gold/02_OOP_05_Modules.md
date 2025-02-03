@@ -197,6 +197,18 @@ class DynamicInclude
 end
 ```
 
+#### nesting
+- Modules can be nested within other modules.
+```ruby
+module SuperMod
+  module BaseMod
+    p Module.nesting
+  end
+end
+
+# => [SuperMod::BaseMod, SuperMod]
+```
+
 ### Important Ruby Standard Modules
 - Enumerable: Adds traversal, searching, and sorting to collections.
 - Comparable: Adds comparison methods (<, <=, ==, >=, >).

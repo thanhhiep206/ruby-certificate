@@ -44,3 +44,30 @@ end
 ```ruby
 Thread.new { puts "In a thread" }
 ```
+
+### YAML
+- This module provides a Ruby interface for data serialization in YAML format.
+```ruby
+require 'yaml'
+
+yaml = YAML.dump({ name: "Alice", age: 30 })
+puts yaml
+# => ---
+# => name: Alice
+# => age: 30
+```
+
+```ruby
+require 'yaml'
+
+yaml = <<YAML
+  sum: 510,
+  orders:
+    - 260
+    - 250
+YAML
+
+object = YAML.load(yaml)
+puts object
+# => {:sum=>510, :orders=>[260, 250]}
+```

@@ -39,3 +39,9 @@ animal = Dog.new
 animal.speak  # Outputs: "Woof!"
 ```
 
+- Lambda cannot call with missing arguments.
+```ruby
+my_lambda = ->(x, y) { x * y }
+my_lambda.call(10, 20)  # Outputs: 200
+my_lambda.call(10)  # # wrong number of arguments (given 1, expected 2)
+```

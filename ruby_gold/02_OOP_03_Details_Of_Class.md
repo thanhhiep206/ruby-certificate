@@ -176,6 +176,30 @@ str.freeze
 str.reverse # => "Hello"
 ```
 
+- inspect
+```ruby
+class MyClass
+  def inspect
+    "MyClass"
+  end
+end
+
+p MyClass.new # => "MyClass"
+
+class MyClass2
+end
+
+p MyClass2.new # => #<MyClass2:0x0000000100000000>
+
+class Hoge
+  def initialize
+    @fizz = "bazz"
+  end
+end
+
+p Hoge.new # => #<Hoge:0x0000000100000000 @fizz="bazz">
+```
+
 ### Design Patterns with Classes
 - Implementing common design patterns like Singleton, Factory, and Strategy.
 #### Singleton
