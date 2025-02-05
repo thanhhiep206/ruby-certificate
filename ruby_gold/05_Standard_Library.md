@@ -71,3 +71,69 @@ object = YAML.load(yaml)
 puts object
 # => {:sum=>510, :orders=>[260, 250]}
 ```
+
+### JSON
+- This module provides a Ruby interface for data serialization in JSON format.
+```ruby
+require 'json'
+
+json = JSON.dump({ name: "Alice", age: 30 })
+puts json
+# => {"name":"Alice","age":30}
+```
+
+#### Parsing JSON Arrays
+```ruby
+json = '[{"foo": 0, "bar": 1}, ["baz", 2]]'
+JSON.parse(json) # => [{"foo"=>0, "bar"=>1}, ["baz", 2]]
+```
+
+#### Parsing JSON Objects
+```ruby
+json = '{"foo": {"bar": 1, "baz": 2}, "bat": [0, 1, 2]}'
+JSON.parse(json) # => {"foo"=>{"bar"=>1, "baz"=>2}, "bat"=>[0, 1, 2]}
+```
+
+#### Parsing JSON Scalars
+- String
+```ruby
+ruby = JSON.parse('"foo"')
+ruby # => 'foo'
+ruby.class # => String
+```
+
+- Number
+```ruby
+ruby = JSON.parse('123')
+ruby # => 123
+ruby.class # => Integer
+```
+
+- Boolean
+```ruby
+ruby = JSON.parse('true')
+ruby # => true
+ruby.class # => TrueClass
+```
+
+- Null
+```ruby
+ruby = JSON.parse('null')
+ruby # => nil
+ruby.class # => NilClass
+```
+
+#### Load JSON
+```ruby
+json = '{"name": "Alice", "age": 30}'
+object = JSON.load(json)
+object # => {"name"=>"Alice", "age"=>30}
+```
+
+#### Generating JSON
+- JSON.dump
+```ruby
+json = JSON.dump({ name: "Alice", age: 30 })
+puts json
+# => {"name":"Alice","age":30}
+```

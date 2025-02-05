@@ -53,6 +53,11 @@ lazy_enum.first(10)  # => [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
   - lazy: Converts an enumerator into a lazy enumerator.
   - Operations like select, reject, map can be performed lazily.
 
+| Method   | Execution Type	 | Returns Immediately?               	| Requires .to_a / .force for Output? |
+|----------|-----------------|--------------------------------------|-------------------------------------|
+| first(n) | Eager           | Yes, returns an array                | No                                  |
+| take(n)	 | Lazy            | 	No, returns another lazy enumerator | Yes                                 |
+
 ### Enumerator::Generator
 - Custom Generators: You can define custom iteration behavior using Enumerator::Generator.
 ```ruby

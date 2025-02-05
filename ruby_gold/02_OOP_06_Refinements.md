@@ -96,3 +96,33 @@ end
 # not activated here
 ```
 
+- multiple using
+using after will override the previous one
+```ruby
+class C
+  def foo
+    puts "C#foo"
+  end
+end
+
+module M1
+  refine C do
+    def foo
+      puts "M1#foo"
+    end
+  end
+end
+
+module M2
+  refine C do
+    def foo
+      puts "M2#foo"
+    end
+  end
+end
+
+using M1
+using M2
+
+C.new.foo # prints "M2#foo"
+```
