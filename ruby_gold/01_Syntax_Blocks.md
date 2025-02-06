@@ -57,3 +57,37 @@ puts x # => 10
 ```ruby
 [1, 2, 3].lazy.map { |x| x * 2 }.first
 ```
+
+### Block Arguments
+- Adding & to the argument name makes it a block argument.
+- Block arguments are written after other arguments.
+```ruby
+def test(&block)
+  block.call
+end
+
+test { puts "Hello, World!" }
+```
+
+```ruby
+def test(n, &block)
+  block.call
+end
+
+test(5) { puts "Hello, World!" } # => Hello, World!
+```
+
+```ruby
+def test(n, &block)
+  block.yield
+end
+
+test(5) { puts "Hello, World!" } # => Hello, World!
+```
+
+```ruby
+def test(&block, n)
+  block.call
+end 
+# => syntax error
+```

@@ -74,32 +74,6 @@ def sum(*numbers)
 end
 ```
 
-#### Block Arguments
-- Passing and handling blocks with yield and &block.
-- Converting blocks to procs.
-```ruby
-def test(&block)
-  block.call
-end
-
-test { puts "Hello, World!" }
-```
-
-```ruby
-def test(n, &block)
-  block.call
-end
-
-test(5) { puts "Hello, World!" } # => Hello, World!
-```
-
-```ruby
-def test(&block, n)
-  block.call
-end 
-# => syntax error
-```
-
 ### Method Return Values
 #### Implicit Returns
 Ruby methods return the last evaluated expression.

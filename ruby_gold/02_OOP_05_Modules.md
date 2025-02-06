@@ -28,14 +28,14 @@ module Parent
 end
 
 module Child
-  extend self
   include Parent
+  extend self
 end
 
 p Child::method_1 # => "method_1"
 ```
 
-- In module, extend will make the module methods as class methods.
+- If later include a module and update the inheritance relationship, the method will not be found.
 ```ruby
 module Parent
   def method_1
@@ -44,10 +44,11 @@ module Parent
 end
 
 module Child
-  extend Parent
+  extend self
+  include Parent
 end
 
-p Child::method_1 # => "method_1"
+p Child::method_1 # => undefined method
 ```
 
 #### Namespaces
