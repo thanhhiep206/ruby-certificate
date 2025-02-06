@@ -51,13 +51,6 @@ end
 puts x # => 10
 ```
 
-### Performance Considerations
-- Block performance compares to traditional looping constructs 
-- Dive into lazy enumerators and when to use them for performance benefits:
-```ruby
-[1, 2, 3].lazy.map { |x| x * 2 }.first
-```
-
 ### Block Arguments
 - Adding & to the argument name makes it a block argument.
 - Block arguments are written after other arguments.
