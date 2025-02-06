@@ -110,8 +110,8 @@ See [Access Control](./02_OOP_02_Access_Control.md)
 ### Singleton Methods
 See [Singleton Methods](./02_OOP_02_Access_Control.md)
 
-### Singleton Classes
-Singleton Classes is a class that is created for a specific object.
+### Singleton Class Methods
+Singleton Class Methods is a class that is created for a specific object.
 
 ```ruby
 class MyClass
@@ -134,6 +134,11 @@ class C
 end
 
 p C.hoge # => "Hi"
+```
+
+Display the singleton class methods.
+```ruby
+p C.singleton_class.methods # => [:hoge]
 ```
 
 ### attr_*

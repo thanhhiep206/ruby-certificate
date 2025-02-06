@@ -34,6 +34,7 @@
 - __FILE__: The current file's name.
 - __LINE__: The current line number.
 - __ENCODING__: The encoding of the current file (e.g., UTF-8).
+- __END__: The end of the script, after the DATA section.
 
 - ARGV: The array of command-line arguments passed to the script (similar to $*).
 - DATA: A file-like object representing the data section of the script (after __END__).

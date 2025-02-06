@@ -109,16 +109,6 @@ def helper_method
 end
 ```
 
-#### Singleton Methods
-- Methods defined on a single object instance.
-```ruby
-class MyClass
-  def self.singleton_method
-    # method body
-  end
-end
-```
-
 ### Advanced Method Techniques
 #### Method Overloading
 - Simulating overloading using argument handling.
