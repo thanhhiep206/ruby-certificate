@@ -1,3 +1,18 @@
+### Load and Require
+- require will be loaded only once
+```ruby
+(1..10).each do |i|
+  require 'logger'
+end
+```
+
+- load will be loaded every time
+```ruby
+(1..10).each do |i|
+  load 'logger.rb'
+end
+```
+
 ### Time
 - Time.now - Returns the current time.
 - Time.new - Creates a new Time object.

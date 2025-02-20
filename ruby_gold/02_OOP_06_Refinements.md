@@ -1,7 +1,7 @@
 - Refinements are a way to modify the behavior of a class or module without changing the original source code.
 
 - You cannot activate refinements dynamically (e.g., inside a method or block).
-- Refinements do not work in eval, instance_eval, or similar methods when invoked in a different scope.
+- Refinements do not work in eval, instance_eval, or similar methods when invoked in a different scope (singleton class).
 - Refinements are not applied to methods defined outside of the refined class/module.
 ```ruby
 class C
@@ -13,6 +13,7 @@ end
 module M
   refine C do
     def foo
+      super
       puts "C#foo in M"
     end
   end
@@ -22,7 +23,9 @@ using M
 
 c = C.new
 
-c.foo # prints "C#foo in M"
+c.foo
+# C #foo
+# C#foo in M
 ```
 
 - Refinements vs Monkey Patching

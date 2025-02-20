@@ -136,10 +136,19 @@ end
 p C.hoge # => "Hi"
 ```
 
+```ruby
+MyClass.singleton_class do
+  def hoge
+  end
+end
+```
+
 Display the singleton class methods.
 ```ruby
 p C.singleton_class.methods # => [:hoge]
 ```
+
+- Note: Singleton class will run before the class definition.
 
 ### attr_*
 - attr_* cannot be use super.

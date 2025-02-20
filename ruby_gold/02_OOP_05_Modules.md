@@ -139,7 +139,7 @@ puts B.new.greet
 |---------------------|----------------------------------------|----------------------------------------|
 | Method Precedence	  | Class methods override module methods. | Module methods override class methods. |
 | Method Lookup Chain | Module appears after the class.	       | Module appears before the class.       |
-| Primary Use	      | Add shared behavior to classes.	       | Override or extend behavior.           |
+| Primary Use	        | Add shared behavior to classes.	       | Override or extend behavior.           |
 
 #### Hooks in Modules
 - included and extended hooks allow modules to customize their behavior when included or extended.
