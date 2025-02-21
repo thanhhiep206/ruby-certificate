@@ -46,6 +46,8 @@ class MyClass
 end
 ```
 
+**Note**: In ruby, initialize is always a private method.
+
 ### Defining Access Levels
 - Use public, protected, and private keywords to define access levels.
 - Group methods by their access level for clarity.

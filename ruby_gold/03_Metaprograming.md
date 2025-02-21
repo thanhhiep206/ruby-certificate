@@ -218,7 +218,7 @@ Object.const_get("MY_CONSTANT") # => 42
 ```
 
 ### Class and Module Manipulation
-#### class_eval and module_eval
+#### class_eval
 - Add methods or evaluate code in the context of a class or module.
 ```ruby
 class User; end
@@ -229,6 +229,33 @@ User.class_eval do
 end
 
 User.new.greet # => "Hello!"
+```
+
+#### module_eval
+- module_function
+```ruby
+# module_function will be able to define a method as a module function.
+m.module_eval(<<-EOS)
+  CONST = "Constant in Module instance"
+
+  def const
+    CONST
+  end
+
+  module_function :const # module_function にシンボルでメソッドを指定する
+EOS
+```
+
+- instance_eval
+```ruby
+# instance_eval will be able to define a method as an instance method.
+m.instance_eval(<<-EOS)
+  CONST = "Constant in Module instance"
+
+  def const
+    CONST
+  end
+EOS
 ```
 
 #### singleton_class
