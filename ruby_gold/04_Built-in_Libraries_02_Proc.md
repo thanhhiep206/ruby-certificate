@@ -129,3 +129,12 @@ setup = Proc.new { puts "Setting up environment..." }
 setup.call
 ```
 
+- Proc capture rounded environment when defined, not when called.
+```ruby
+var = 1
+my_proc = Proc.new { puts var }
+var = 2
+my_proc.call
+
+# => 2
+```

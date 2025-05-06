@@ -204,3 +204,20 @@ puts child.instance_of?(Parent) # false
 ```ruby
 class MyClass < BasicObject; end
 ```
+
+## ::
+- :: is open class in the global scope.
+```ruby
+class C
+  CONST = "constant"
+end
+
+module M
+  class ::C
+    p CONST
+  end
+end
+
+# => 
+# "constant"
+```

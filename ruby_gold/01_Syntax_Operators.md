@@ -125,3 +125,14 @@ end
 # "m2 "
 # "m1 hello"
 ```
+
+```ruby
+m1 m2 {
+  "hello"
+}
+
+# => 
+# "m2 hello"
+# "m1"
+```
+

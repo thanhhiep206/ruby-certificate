@@ -40,6 +40,19 @@ puts closure.call
 ### Custom Enumerable Methods using Blocks
 - Custom enumerable methods can be created using blocks.
 - e.g., `each`, `map`, `select`, `reject`, `inject`, `reduce`
+- Need each method to be defined in the class
+```ruby
+class Array
+  include Enumerable
+  def each
+    return to_enum unless block_given?
+  end
+end
+
+array = Array.new
+array.each
+array.next
+```
 
 ### Block Scoping and Binding
 - Variables inside a block can shadow variables outside the block.
