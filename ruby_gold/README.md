@@ -29,7 +29,7 @@
 - Refinements: https://docs.ruby-lang.org/en/2.4.0/syntax/refinements_rdoc.html
 
 ### Metaprograming
-- e.g., eval, define_method, instance_variable_get
+- e.g., eval, define_method, instance_variable_get: https://gist.github.com/jamesyang124/9216074
 
 ### Built-in libraries
 - Well-used built-in classes and modules

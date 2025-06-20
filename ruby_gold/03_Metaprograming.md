@@ -170,7 +170,7 @@ p C.new.awesome_method # => "Hello, world"
 ```
 
 ```ruby
-# Use a block will be able to access the class or module context.
+# Use a block will be not able to access the class or module context.
 class C
   CONST = "Hello, world"
 end
@@ -184,6 +184,21 @@ module M
 end
 
 p C.new.awesome_method # => uninitialized constant M::CONST
+
+# Use a string will be able to access the class or module context.
+class C
+  CONST = "Hello, world"
+end
+
+module M
+  C.class_eval(<<-EOS)
+    def awesome_method
+      CONST
+    end
+  EOS
+end
+
+p C.new.awesome_method # => "Hello, world"
 ```
 
 
@@ -264,6 +279,17 @@ EOS
 obj = Object.new
 obj.singleton_class.define_method(:unique_method) { "I'm unique!" }
 obj.unique_method # => "I'm unique!"
+```
+
+```ruby
+dog = "dog"
+class << dog
+  def bark
+    "Woof!"
+  end
+end
+
+puts dog.bark   # => "Woof!"
 ```
 
 #### prepend and include

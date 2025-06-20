@@ -210,6 +210,36 @@ end
 # => [SuperMod::BaseMod, SuperMod]
 ```
 
+### Reopening Modules
+- Modules can be reopened to add or modify methods.
+```ruby
+module M1
+  def method_1
+    "Hello from M1"
+  end
+end
+
+class MyClass
+  include M1
+end
+
+p MyClass.new.method_1 # => "Hello from M1"
+
+module M2
+  def method_2
+    "Hello from M2"
+  end
+end
+
+module M1
+  include M2
+end
+
+p MyClass.new.method_1 # => "Hello from M2"
+ 
+# => Module M1 will be reopened and include M2. Because MyClass already include M1, so MyClass will be have two methods: method_1 and method_2.
+
+
 ### Important Ruby Standard Modules
 - Enumerable: Adds traversal, searching, and sorting to collections.
 - Comparable: Adds comparison methods (<, <=, ==, >=, >).

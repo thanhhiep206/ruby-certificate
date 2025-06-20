@@ -221,3 +221,16 @@ end
 # => 
 # "constant"
 ```
+
+## method_defined?
+- Returns true if the named method is defined by mod (or its included modules and, if mod is a class, its ancestors). Public and protected methods are matched. String arguments are converted to symbols.
+
+```ruby
+String.ancestors # => [String, Comparable, Object, PP::ObjectMixin, Kernel, BasicObject]
+
+Class.ancestors # => [Class, Module, Object, PP::ObjectMixin, Kernel, BasicObject]
+
+String.singleton_class.ancestors # => [#<Class:String>, #<Class:Object>, #<Class:BasicObject>, Class, Module, Object, PP::ObjectMixin, Kernel, BasicObject]
+
+Class.singleton_class.ancestors # => ...
+```
