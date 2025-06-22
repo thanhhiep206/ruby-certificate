@@ -196,20 +196,38 @@ C.new.awesome_method # => "Hello, world"
 ```
 
 #### Block Context
+- if you pass a block to class_eval (or module_eval), the nesting is as follows:
 ```ruby
-class C
-  CONST = "Hello, world"
+A.module_eval do
+  p Module.nesting # [] # You are not in the nesting of A.
 end
+```
+It means A.f looks up the constants at the top level:
+```ruby
+module A
+  B = 42
 
-module M
-  C.class_eval do
-    def awesome_method
-      CONST  # Tries to access M's constants
-    end
+  def f
+    21
   end
 end
 
-# C.new.awesome_method # => NameError: uninitialized constant M::CONST
+A.module_eval do
+  def self.f
+    p B
+  end
+end
+
+B = 15
+
+A.f
+# => 15
+```
+
+- If you define a constant at the top level, Object becomes a constant.
+```ruby
+B = "Hello, world"
+p Object.const_get(:B) # "Hello, world
 ```
 
 **Use a string when you need to access the class's scope, use a block for complex code.**

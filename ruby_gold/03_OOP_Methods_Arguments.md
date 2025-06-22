@@ -146,17 +146,21 @@ end
 
 ## Method Aliasing
 Using alias and alias_method to create method shortcuts or extend functionality.
+Can alias a method or global variable.
 ```ruby
 class User
   def name
     @name
   end
   
-  alias_method :full_name, :name
+  alias_method "new_method", "old_method"
+  alias_method :new_method, :old_method
 end
 
 # Alternative syntax
-alias old_method new_method
+alias new_method old_method
+alias :new_method :old_method
+alias $new_global_val $old_global_val
 ```
 
 ## Method Introspection
