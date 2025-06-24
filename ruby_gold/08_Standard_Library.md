@@ -72,6 +72,9 @@ require 'json'
 json_string = '{"name": "Alice", "age": 30}'
 data = JSON.parse(json_string)  # => {"name"=>"Alice", "age"=>30}
 
+# Load JSON
+JSON.load json_string # => {"name"=>"Alice", "age"=>30}
+
 # Generating JSON
 hash = { name: "Alice", age: 30 }
 json_string = JSON.generate(hash)  # => '{"name":"Alice","age":30}'

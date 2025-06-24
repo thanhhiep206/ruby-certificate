@@ -74,22 +74,100 @@ class ParentClass
   end
 end
 
-module PrependModule
+module PrependModule1
   def my_method
     puts "PrependModule"
+  end
+end
+
+module PrependModule2
+  def my_method
+    puts "PrependModule2"
+  end
+end
+
+module PrependModule3
+  def my_method
+    puts "PrependModule3"
   end
 end
 
 class MyClass < ParentClass
   include MyModule
   include MyModule2
-  prepend PrependModule
+  prepend PrependModule1, PrependModule2
+  prepend PrependModule3
 end
 
 MyClass.ancestors 
-# => [PrependModule, MyClass, MyModule2, MyModule, ParentClass, Object, Kernel, BasicObject]
-MyClass.new.my_method # => "PrependModule"
+# => [PrependModule3, PrependModule1, PrependModule2, MyClass, MyModule2, MyModule, ParentClass, Object, Kernel, BasicObject]
+MyClass.new.my_method # => "PrependModule3"
 ```
+
+### Accessing Constants in Nested Modules
+```ruby
+module A
+  p Module.nesting  # [A]
+  
+  module B
+    p Module.nesting  # [A::B, A]
+  end
+
+  module B::C
+    p Module.nesting  # [A::B::C, A]
+  end
+end
+
+module A::D
+  p Module.nesting  # [A::D]
+end
+
+module M1
+  class C1
+    p Module.nesting  # [M1::C1, M1]
+    CONST = "001"
+  end
+
+  class C2 < C1
+    p Module.nesting  # [M1::C2, M1]
+    CONST = "010"
+
+    module M2
+      p Module.nesting  # [M1::C2::M2, M1::C2, M1]
+      CONST = "011" # M2::CONST
+
+      class Ca
+        p Module.nesting  # [M1::C2::M2::Ca, M1::C2::M2, M1::C2, M1]
+        CONST = "100" # Ca::CONST
+      end
+
+      class Cb < Ca
+        p Module.nesting  # [M1::C2::M2::Cb, M1::C2::M2, M1::C2, M1]
+        p CONST # 011
+      end
+    end
+  end
+end
+```
+When module D is defined, the nesting does not include module A. Hence, module D cannot access the constants defined in module A, without explicitly using the scope resolution (::) operator.
+
+```ruby
+class Human
+  NAME = "Unknown"
+
+  def name
+    NAME
+  end
+end
+
+class Noguchi < Human
+  NAME = "Hideyo"
+end
+
+puts Noguchi.new.name # => "Unknown"
+```
+Const Name is in Human class, method name is define in Human class.
+Ruby find Name in Lexical scope – class Human.
 
 ### Object Lifecycle and Initialization
 Subclasses can override initialize, but should use super when needed:

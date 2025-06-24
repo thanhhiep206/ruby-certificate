@@ -347,6 +347,15 @@ infinite_enum = (1..Float::INFINITY).lazy
 | first(n) | Eager          | Yes, returns an array             | No                                  |
 | take(n)  | Lazy           | No, returns another lazy enum     | Yes                                 |
 
+#### Get value from lazy enumerator
+```ruby
+(1..100).each.lazy.chunk(&:even?).first(5)
+# => [[false, [1]], [true, [2]], [false, [3]], [true, [4]], [false, [5]]]
+
+(1..100).each.lazy.chunk(&:even?).take(5).force
+# => [[false, [1]], [true, [2]], [false, [3]], [true, [4]], [false, [5]]]
+```
+
 #### Infinite Sequences
 ```ruby
 # Fibonacci sequence
@@ -395,6 +404,19 @@ end
 lines_from_file("large_file.txt").lazy
   .select { |line| line.include?("ERROR") }
   .first(10)
+```
+
+#### Yielding
+Yielding is a way to pass control back to the block.
+```ruby
+def bar(&block)
+  block.yield
+end
+
+bar do
+  puts "hello, world"
+end
+# => hello, world
 ```
 
 ### Enumerator vs Enumerable
@@ -449,3 +471,37 @@ enum.map(&:to_s)       # => ["1", "2", "3"]
 - **Enumerators** provide memory-efficient iteration
 - **Chain operations** without creating intermediate arrays
 - **Use `first(n)`** instead of `take(n).to_a` for better performance 
+
+### Module#refine
+- Module#refine will create a self anonymous module
+```ruby
+class C
+end
+
+module M
+  refine C do
+    self # anonymous module
+  end
+end
+```
+
+- If want to define self, should use singleton class
+```ruby
+class C
+  def self.m1
+    'C.m1'
+  end
+end
+
+module M
+  refine C.singleton_class do
+    def m1
+      'C.m1 in M'
+    end
+  end
+end
+
+using M
+
+puts C.m1 # C.m1 in M
+```

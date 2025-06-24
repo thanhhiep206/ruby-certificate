@@ -239,6 +239,27 @@ class << MyClass
 end
 ```
 
+- Singleton scope
+```ruby
+class C
+  CONST = "Hello, world"
+end
+
+$c = C.new
+
+class D
+  class << $c
+    def say
+      CONST
+    end
+  end
+end
+
+# [#<Class:#<C:0x007fa4741607e0>>, C, Object, Kernel, BasicObject]
+p $c.say
+# => Hello, world
+```
+
 ### attr_* Methods
 
 #### Basic Usage
@@ -293,10 +314,32 @@ p User.new("Alice") # => #<User:0x... @name="Alice">
 ```
 
 #### Freezing Objects
+- Cannot action destructive methods on frozen objects
 ```ruby
 str = "Hello"
 str.freeze
 str.upcase!  # => FrozenError: can't modify frozen String
+```
+
+- Can set value to frozen objects
+```ruby
+hoge = "hoge".freeze
+hoge = "foo".freeze
+puts hoge # => "foo"
+```
+
+- Can change attr of Class if it's not frozen
+```ruby
+class Fish
+  attr_accessor :name
+  def initialize(name)
+    @name = name
+  end
+end
+
+liberty = Fish.new("liberty")
+liberty.name.upcase!
+puts liberty.name # => LIBERTY
 ```
 
 #### ObjectSpace and Introspection

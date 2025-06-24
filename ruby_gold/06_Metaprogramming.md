@@ -186,6 +186,8 @@ end
 
 module M
   C.class_eval(<<-CODE)
+    CONST_IN_HERE_DOC = 100
+
     def awesome_method
       CONST  # Can access C's constants
     end
@@ -193,6 +195,9 @@ module M
 end
 
 C.new.awesome_method # => "Hello, world"
+
+puts "HERE_DOC: CONST is defined? #{C.const_defined?(:CONST_IN_HERE_DOC, false)}" # true
+puts "HERE_DOC: CONST is defined? #{Object.const_defined?(:CONST_IN_HERE_DOC, false)}" # false
 ```
 
 #### Block Context
@@ -213,6 +218,8 @@ module A
 end
 
 A.module_eval do
+  EVAL_CONST = 100
+
   def self.f
     p B
   end
@@ -222,6 +229,16 @@ B = 15
 
 A.f
 # => 15
+
+puts "EVAL_CONST is defined? #{A.const_defined?(:EVAL_CONST, false)}" # false
+puts "EVAL_CONST is defined? #{Object.const_defined?(:EVAL_CONST, false)}" # true
+```
+
+Memo:
+If not use const_defined? with false, it will check parent class's constants.
+```ruby
+puts "EVAL_CONST is defined? #{A.const_defined?(:EVAL_CONST)}" # true
+puts "EVAL_CONST is defined? #{Object.const_defined?(:EVAL_CONST)}" # true
 ```
 
 - If you define a constant at the top level, Object becomes a constant.

@@ -74,6 +74,7 @@
 ### Official Practice
 - https://github.com/ruby-association/prep-test/blob/version3/gold.md
 - https://pragprog.com/titles/ppmetr2/metaprogramming-ruby-2
+- https://docs.ruby-lang.org/ja/2.0.0/doc/spec=2foperator.html#range
 
 ### Additional Practice
 - https://rex.libertyfish.co.jp/
