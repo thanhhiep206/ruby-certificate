@@ -231,6 +231,8 @@ end
 MyClass.singleton_class.define_method(:my_method) { puts "SingletonClass" }
 MyClass.my_method # => "SingletonClass"
 
+# Memo: self in singleton class is MyClass.
+
 # Alternative syntax
 class << MyClass
   def class_method

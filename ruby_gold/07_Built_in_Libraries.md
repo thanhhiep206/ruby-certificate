@@ -505,3 +505,13 @@ using M
 
 puts C.m1 # C.m1 in M
 ```
+
+- Cannot call using in a class because it will raise an error
+```ruby
+class C
+  using M
+  def m1
+    'C.m1 in M'
+  end
+end
+```
