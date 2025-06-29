@@ -16,25 +16,6 @@ Mod.constants          #=> [:CONST, :PI, :E]
 Mod.instance_methods   #=> [:meth]
 ```
 
-### Public Class Methods
-
-#### new → mod & new {|mod| block } → mod
-Creates a new anonymous module. If a block is given, it is passed the module object, and the block is evaluated in the context of this module like module_eval.
-```ruby
-fred = Module.new do
-  def meth1
-    "hello"
-  end
-  def meth2
-    "bye"
-  end
-end
-a = "my string"
-a.extend(fred)   #=> "my string"
-a.meth1          #=> "hello"
-a.meth2          #=> "bye"
-```
-
 ### Public Instance Methods
 
 #### mod < other → true, false, or nil
