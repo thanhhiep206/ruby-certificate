@@ -515,3 +515,38 @@ class C
   end
 end
 ```
+
+- Cannot call using in a method because it will raise an error
+```ruby
+```
+
+- Using just apply last refine
+```ruby
+class C
+  def m1(value)
+    100 + value
+  end
+end
+
+module R1
+  refine C do
+    def m1
+      super 50
+    end
+  end
+end
+
+module R2
+  refine C do
+    def m1
+      super 100
+    end
+  end
+end
+
+using R1
+using R2
+
+# => Just apply R2, R1 is not applied
+C.new.m1 # => 200
+```

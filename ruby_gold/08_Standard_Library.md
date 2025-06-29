@@ -473,4 +473,6 @@ end
 # Parsing CSV string
 data = CSV.parse("name,age\nAlice,30\nBob,25", headers: true)
 data.each { |row| puts row.to_h }
-``` 
+```
+
+### Fiber

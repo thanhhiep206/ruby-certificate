@@ -92,6 +92,16 @@ module PrependModule3
   end
 end
 
+module MyModule1
+  def my_method
+    puts "MyModule1"
+  end
+end
+
+module MyModule
+  include MyModule1
+end
+
 class MyClass < ParentClass
   include MyModule
   include MyModule2
@@ -100,7 +110,7 @@ class MyClass < ParentClass
 end
 
 MyClass.ancestors 
-# => [PrependModule3, PrependModule1, PrependModule2, MyClass, MyModule2, MyModule, ParentClass, Object, Kernel, BasicObject]
+# => [PrependModule3, PrependModule1, PrependModule2, MyClass, MyModule2, MyModule, MyModule1, ParentClass, Object, Kernel, BasicObject]
 MyClass.new.my_method # => "PrependModule3"
 ```
 
@@ -266,6 +276,39 @@ end
 
 User.new.greet     # => "Hello!"
 Admin.greet        # => "Hello!"
+```
+
+```ruby
+module M
+  extend self
+  def a
+    100
+  end
+end
+
+p M.a # => 100
+
+# module_function is a method to make a method a module function
+module M
+  def a
+    100
+  end
+
+  module_function :a
+end
+
+p M.a # => 100
+
+# class << self is a method to make a method a class function
+module M
+  class << self
+    def a
+      100
+    end
+  end
+end
+
+p M.a # => 100
 ```
 
 #### Module as Namespace

@@ -262,6 +262,19 @@ p $c.say
 # => Hello, world
 ```
 
+- self in singleton class is the class itself
+```ruby
+class C
+end
+
+class << C
+  self # => C
+end
+
+# can call singleton class method
+p C.singleton_class # => #<Class:#<C:0x007fa4741607e0>>
+```
+
 ### attr_* Methods
 
 #### Basic Usage
@@ -312,7 +325,12 @@ class User
   end
 end
 
-p User.new("Alice") # => #<User:0x... @name="Alice">
+p User.new("Alice")         # => #<User:0x... @name="Alice">
+p User.new("Alice").inspect # => "#<User:0x00007fffe381f318 @name=\"Alice\">"
+puts User.new("Alice")      # => #<User:0x00007fffe3699ed0>
+puts User.new("Alice").to_s # => #<User:0x00007fffe3694c50>
+print User.new("Alice")     # => #<User:0x00007fffe366a888>
+puts User.new("Alice").inspect # => #<User:0x00007fffe3675c10 @name="Alice">
 ```
 
 #### Freezing Objects

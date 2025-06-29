@@ -258,3 +258,15 @@ end
 greeter = DynamicGreeter.new
 greeter.greet_john # => "Hello, John!"
 ``` 
+
+## methods.include? and define_method?
+- methods is list singlton class methods
+```ruby
+class MyClass
+  def method_one
+  end
+end
+
+p MyClass.methods.include?(:method_one) # => true
+p MyClass.methods.include?(:method_two) # => false
+```
