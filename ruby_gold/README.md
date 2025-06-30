@@ -69,6 +69,12 @@
 - File operations and I/O
 - Threading basics
 
+## How to Study
+### Install docker 3.1.x
+```sh
+docker run -it --rm ruby:3.1 irb
+```
+
 ## Practice Resources
 
 ### Official Practice
