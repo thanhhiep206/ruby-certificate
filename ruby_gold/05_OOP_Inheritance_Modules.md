@@ -407,7 +407,7 @@ Make module methods available as both instance and class methods:
 ```ruby
 module Parent
   def method_1
-    __method__
+    __method__ # Return symbol of the method name :method_1
   end
 end
 

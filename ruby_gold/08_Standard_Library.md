@@ -476,3 +476,29 @@ data.each { |row| puts row.to_h }
 ```
 
 ### Fiber
+- Fiber means creating code blocks that can be paused and resumed, much like threads
+- When a fiber is created it will not run automatically. It must be explicitly asked to run using the `Fiber#resume` method
+- The code running inside the fiber can give up control by calling `Fiber.yield` in which case it yields control back to caller (the caller of the `Fiber#resume`).
+- Upon yielding or termination the Fiber returns the value of the last executed expression
+```ruby
+fiber = Fiber.new do
+  Fiber.yield 1
+  2
+end
+
+puts fiber.resume # => 1
+puts fiber.resume # => 2
+puts fiber.resume # => FiberError: can't resume dead fiber
+```
+
+- The `Fiber#resume` method accepts an arbitrary number of parameters, if it is the first call to resume then they will be passed as block arguments
+  - Otherwise they will be the return value of the call to `Fiber.yield`
+```ruby
+fiber = Fiber.new do |first|
+  second = Fiber.yield first + 2
+end
+
+puts fiber.resume 10 # => 12
+puts fiber.resume 1_000_000 # => 1000000
+puts fiber.resume "The fiber will be dead before I can cause trouble" # => FiberError: can't resume dead fiber
+```
