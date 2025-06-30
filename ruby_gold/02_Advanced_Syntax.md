@@ -128,6 +128,41 @@ class Array
 end
 ```
 
+### Procs
+```ruby
+square = Proc.new {|x| x**2 }
+
+square.call(3)  #=> 9
+# shorthands:
+square.(3)      #=> 9
+square[3]       #=> 9
+```
+
+```ruby
+def gen_times(factor)
+  Proc.new {|n| n*factor } # remembers the value of factor at the moment of creation
+end
+
+times3 = gen_times(3)
+times5 = gen_times(5)
+
+times3.call(12)               #=> 36
+times5.call(5)                #=> 25
+times3.call(times5.call(4))   #=> 60
+```
+
+- to_proc will return a proc that will call the method on the object
+```ruby
+:to_s.to_proc.call(1)           #=> "1"
+[1, 2].map(&:to_s)              #=> ["1", "2"]
+
+method(:puts).to_proc.call(1)   # prints 1
+[1, 2].each(&method(:puts))     # prints 1, 2
+
+{test: 1}.to_proc.call(:test)       #=> 1
+%i[test many keys].map(&{test: 1})  #=> [1, nil, nil]
+```
+
 ### Lambdas
 Lambdas are a special type of Proc with stricter argument handling and different return behavior.
 

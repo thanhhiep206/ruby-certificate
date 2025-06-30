@@ -198,6 +198,28 @@ Counter.increment
 puts Counter.current_count # => 1
 ```
 
+- With singleton class, Ruby will find class variable by lexical scope
+```ruby
+class C
+  @@val = 10
+end
+
+module B
+  @@val = 30
+end
+
+module M
+  include B
+  @@val = 20
+
+  class << C
+    p @@val
+  end
+end
+
+# => 20
+```
+
 #### Class Methods (self.method_name)
 ```ruby
 class User
