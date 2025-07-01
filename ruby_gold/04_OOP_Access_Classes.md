@@ -72,49 +72,6 @@ alice.older_than?(bob)  # => true
 # alice.age  # NoMethodError (protected method)
 ```
 
-### Setting Access Levels
-```ruby
-class MyClass
-  # Group methods by access level
-  public
-  def public_method_1; end
-  def public_method_2; end
-  
-  protected
-  def protected_method; end
-  
-  private
-  def private_method; end
-  
-  # Or specify individual methods
-  def another_method; end
-  private :another_method
-end
-```
-
-### Access Control with Metaprogramming
-```ruby
-class MyClass
-  private
-  define_method(:dynamic_private_method) do
-    "I'm dynamically private!"
-  end
-end
-```
-
-### Accessing Private Methods
-```ruby
-class MyClass
-  private
-  def private_method
-    "Private!"
-  end
-end
-
-obj = MyClass.new
-obj.send(:private_method) # => "Private!" (use cautiously)
-```
-
 ## Class Details
 
 ### Basic Class Definition
@@ -370,25 +327,6 @@ hoge = "foo".freeze
 puts hoge # => "foo"
 ```
 
-- Can change attr of Class if it's not frozen
-```ruby
-class Fish
-  attr_accessor :name
-  def initialize(name)
-    @name = name
-  end
-end
-
-liberty = Fish.new("liberty")
-liberty.name.upcase!
-puts liberty.name # => LIBERTY
-```
-
-#### ObjectSpace and Introspection
-```ruby
-ObjectSpace.each_object(Class) { |klass| puts klass }
-```
-
 #### Understanding self in Different Contexts
 ```ruby
 self # => main
@@ -405,34 +343,3 @@ class MyClass
   end
 end
 ```
-
-### Design Patterns with Classes
-
-#### Singleton Pattern
-```ruby
-class DatabaseConnection
-  @@instance = nil
-
-  def self.instance
-    @@instance ||= new
-  end
-  
-  private_class_method :new
-end
-```
-
-#### Factory Pattern
-```ruby
-class VehicleFactory
-  def self.create(type)
-    case type
-    when :car
-      Car.new
-    when :bike
-      Bike.new
-    else
-      raise "Unknown vehicle type"
-    end
-  end
-end
-``` 
