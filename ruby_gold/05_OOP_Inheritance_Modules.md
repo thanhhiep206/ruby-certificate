@@ -114,24 +114,8 @@ MyClass.ancestors
 MyClass.new.my_method # => "PrependModule3"
 ```
 
-### Accessing Constants in Nested Modules
+### Accessing Constants in Nested Modules (Module Nesting)
 ```ruby
-module A
-  p Module.nesting  # [A]
-  
-  module B
-    p Module.nesting  # [A::B, A]
-  end
-
-  module B::C
-    p Module.nesting  # [A::B::C, A]
-  end
-end
-
-module A::D
-  p Module.nesting  # [A::D]
-end
-
 module M1
   class C1
     p Module.nesting  # [M1::C1, M1]
@@ -159,7 +143,7 @@ module M1
   end
 end
 ```
-When module D is defined, the nesting does not include module A. Hence, module D cannot access the constants defined in module A, without explicitly using the scope resolution (::) operator.
+=> When module D is defined, the nesting does not include module A. Hence, module D cannot access the constants defined in module A, without explicitly using the scope resolution (::) operator.
 
 ```ruby
 class Human
@@ -176,51 +160,8 @@ end
 
 puts Noguchi.new.name # => "Unknown"
 ```
-Const Name is in Human class, method name is define in Human class.
-Ruby find Name in Lexical scope – class Human.
-
-### Object Lifecycle and Initialization
-Subclasses can override initialize, but should use super when needed:
-```ruby
-class Parent
-  def initialize(name)
-    @name = name
-  end
-end
-
-class Child < Parent
-  def initialize(name, age)
-    super(name)
-    @age = age
-  end
-end
-```
-
-### Polymorphism
-Dynamic method resolution at runtime:
-```ruby
-class Animal
-  def speak
-    "..."
-  end
-end
-
-class Dog < Animal
-  def speak
-    "Woof!"
-  end
-end
-
-class Cat < Animal
-  def speak
-    "Meow!"
-  end
-end
-
-[Dog.new, Cat.new].each { |animal| puts animal.speak }
-# => "Woof!"
-# => "Meow!"
-```
+=> Const Name is in Human class, method name is define in Human class.
+=> Ruby find Name in Lexical scope – class Human.
 
 ### Class Relationship Checks
 ```ruby
@@ -311,22 +252,6 @@ end
 p M.a # => 100
 ```
 
-#### Module as Namespace
-```ruby
-module PaymentGateway
-  class Transaction
-    def process
-      "Processing payment"
-    end
-  end
-  
-  API_VERSION = "v2"
-end
-
-transaction = PaymentGateway::Transaction.new
-puts PaymentGateway::API_VERSION
-```
-
 #### Module Constants
 ```ruby
 module MathUtils
@@ -372,36 +297,6 @@ puts User.new.hello  # => "Hello from Module, Hello from User"
 | Method Lookup Chain | Module appears after the class        | Module appears before the class       |
 | Primary Use         | Add shared behavior to classes         | Override or extend behavior            |
 
-#### Module Hooks
-Customize behavior when modules are included or extended:
-```ruby
-module Trackable
-  def self.included(base)
-    puts "#{base} included #{self}"
-    base.extend(ClassMethods)
-  end
-  
-  def self.extended(base)
-    puts "#{base} extended #{self}"
-  end
-  
-  module ClassMethods
-    def track_changes
-      @track_changes = true
-    end
-  end
-  
-  def log_change
-    puts "Change logged" if self.class.instance_variable_get(:@track_changes)
-  end
-end
-
-class User
-  include Trackable  # => "User included Trackable"
-  track_changes
-end
-```
-
 #### Module extend self
 Make module methods available as both instance and class methods:
 ```ruby
@@ -436,19 +331,6 @@ end
 
 DynamicClass.add_logging
 DynamicClass.new.log("Hello") # => "[LOG] Hello"
-```
-
-#### Module Nesting
-```ruby
-module SuperMod
-  module BaseMod
-    p Module.nesting  # => [SuperMod::BaseMod, SuperMod]
-    
-    class InnerClass
-      p Module.nesting  # => [SuperMod::BaseMod::InnerClass, SuperMod::BaseMod, SuperMod]
-    end
-  end
-end
 ```
 
 ### Reopening Modules
@@ -532,55 +414,3 @@ Math::PI      # => 3.141592653589793
 Math.sqrt(16) # => 4.0
 Math.sin(Math::PI / 2)  # => 1.0
 ```
-
-## Best Practices
-
-### Inheritance Best Practices
-- **Favor composition over inheritance** for shared behavior when possible
-- **Avoid deep inheritance hierarchies**; prefer flat structures
-- **Use abstract classes** to define shared behavior while leaving specific implementation to subclasses
-- **Document parent classes** well to clarify their intended usage
-
-### Module Best Practices
-- **Single Responsibility**: Design modules to handle one well-defined responsibility
-- **DRY Principle**: Use modules to remove code duplication
-- **Meaningful Names**: Choose descriptive names that indicate the module's purpose
-- **Keep modules cohesive**: Related functionality should be grouped together
-
-### Example: Well-designed Module System
-```ruby
-module Authenticatable
-  def self.included(base)
-    base.extend(ClassMethods)
-  end
-  
-  module ClassMethods
-    def authenticate(email, password)
-      # Authentication logic
-    end
-  end
-  
-  def authenticated?
-    !@auth_token.nil?
-  end
-  
-  def logout
-    @auth_token = nil
-  end
-end
-
-module Trackable
-  def track_event(event_name, data = {})
-    # Event tracking logic
-  end
-end
-
-class User
-  include Authenticatable
-  include Trackable
-  
-  def initialize(email)
-    @email = email
-  end
-end
-``` 
