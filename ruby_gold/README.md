@@ -3,6 +3,33 @@
 ## Complete Topics
 - https://www.ruby.or.jp/en/certification/examination/
 
+## How to Study
+### Install docker 3.1.x
+```sh
+docker run -it --rm ruby:3.1 irb
+```
+
+## Practice Resources
+
+### Official Practice
+- https://github.com/ruby-association/prep-test/blob/version3/gold.md
+- https://pragprog.com/titles/ppmetr2/metaprogramming-ruby-2
+- https://docs.ruby-lang.org/ja/2.0.0/doc/spec=2foperator.html#range
+
+### Additional Practice
+- https://rex.libertyfish.co.jp/
+- https://learn.viblo.asia/courses/ruby-association-certified-ruby-programmer-gold-ruby-gold-4openRe7Az
+- https://gist.github.com/m-haramoto/121dc43453661816f4eef8fe15f86827#string-1-20%E5%95%8F
+- https://gist.github.com/sean2121/0969a089fc5cdf02dfba7b14ba331c64
+
+### References
+- https://github.com/dazhizhang/ruby-rails/blob/master/Metaprogramming%20Ruby%2C%202nd%20Edition.pdf (Outdated)
+
+## Exam Information
+
+**Location**: IIG 75 Giang Van Minh, Ba Dinh  
+**Registration**: https://www.prometric.com/test-takers/search/ry
+
 ## Study Guide Structure
 
 ### 01. Execution Environment
@@ -66,42 +93,3 @@
 - Singleton and Forwardable modules
 - File operations and I/O
 - Threading basics
-
-## How to Study
-### Install docker 3.1.x
-```sh
-docker run -it --rm ruby:3.1 irb
-```
-
-## Practice Resources
-
-### Official Practice
-- https://github.com/ruby-association/prep-test/blob/version3/gold.md
-- https://pragprog.com/titles/ppmetr2/metaprogramming-ruby-2
-- https://docs.ruby-lang.org/ja/2.0.0/doc/spec=2foperator.html#range
-
-### Additional Practice
-- https://rex.libertyfish.co.jp/
-- https://learn.viblo.asia/courses/ruby-association-certified-ruby-programmer-gold-ruby-gold-4openRe7Az
-- https://gist.github.com/m-haramoto/121dc43453661816f4eef8fe15f86827#string-1-20%E5%95%8F
-- https://gist.github.com/sean2121/0969a089fc5cdf02dfba7b14ba331c64
-
-### References
-- https://github.com/dazhizhang/ruby-rails/blob/master/Metaprogramming%20Ruby%2C%202nd%20Edition.pdf (Outdated)
-
-## Exam Information
-
-**Location**: IIG 75 Giang Van Minh, Ba Dinh  
-**Registration**: https://www.prometric.com/test-takers/search/ry
-
-## Study Progression
-
-**Recommended study order:**
-1. 🚀 **Execution Environment** - Understanding Ruby's runtime
-2. 📚 **Advanced Syntax** - Master Ruby's advanced features
-3. 🏗️ **OOP Methods** - Foundation of object-oriented programming
-4. 🔒 **OOP Access & Classes** - Encapsulation and class design
-5. 🧬 **OOP Inheritance & Modules** - Code reuse and composition
-6. 🪄 **Metaprogramming** - Ruby's dynamic capabilities
-7. 🛠️ **Built-in Libraries** - Core Ruby functionality
-8. 📦 **Standard Library** - Extended Ruby capabilities
