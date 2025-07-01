@@ -1,29 +1,5 @@
 # Object-Oriented Programming: Methods and Arguments
 
-## Method Definition and Calling
-
-### Basic Method Definition
-```ruby
-def method_name(parameters)
-  # method body
-end
-
-# Single-line methods
-def method_name(arguments); end
-```
-
-### Method Calling
-```ruby
-# Implicit receiver (self)
-method_name(arguments)
-
-# Explicit receiver
-receiver.method_name(arguments)
-
-# Method calls without parentheses
-obj.method arg
-```
-
 ## Method Arguments
 
 ### Default Arguments
@@ -201,25 +177,16 @@ MyClass.private_instance_methods(false)  # => [:private_method]
 MyClass.methods.sort  # List all class methods
 ```
 
-## Performance Considerations
-
-### Avoiding Overhead
-Optimize frequently called methods.
+### methods.include? and define_method?
+- methods is list singlton class methods
 ```ruby
-# Use memoization to store expensive results
-def expensive_method
-  @result ||= heavy_computation
+class MyClass
+  def method_one
+  end
 end
-```
 
-### Benchmarking
-Profiling method performance using Benchmark module.
-```ruby
-require 'benchmark'
-
-Benchmark.bm do |x|
-  x.report { expensive_method }
-end
+p MyClass.methods.include?(:method_one) # => true
+p MyClass.methods.include?(:method_two) # => false
 ```
 
 ## Advanced Method Techniques
@@ -258,15 +225,3 @@ end
 greeter = DynamicGreeter.new
 greeter.greet_john # => "Hello, John!"
 ``` 
-
-## methods.include? and define_method?
-- methods is list singlton class methods
-```ruby
-class MyClass
-  def method_one
-  end
-end
-
-p MyClass.methods.include?(:method_one) # => true
-p MyClass.methods.include?(:method_two) # => false
-```
