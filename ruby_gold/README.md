@@ -6,13 +6,13 @@
 ## Study Guide Structure
 
 ### 01. Execution Environment
-📁 `01_Execution_Environment.md`(./01_Execution_Environment.md)
+📁 [`01_Execution_Environment.md`](./01_Execution_Environment.md)
 - Pre-defined variables and constants  
 - Ruby flags and options
 - Command-line interface
 
 ### 02. Advanced Syntax Features  
-📁 `02_Advanced_Syntax.md`(./02_Advanced_Syntax.md)
+📁 [`02_Advanced_Syntax.md`](./02_Advanced_Syntax.md)
 - Operators and precedence
 - Blocks, Procs, and Lambdas
 - Pattern matching (Ruby 3.0+)
@@ -21,32 +21,30 @@
 - Here documents
 
 ### 03. Object-Oriented Programming
-
-#### Methods and Arguments
-📁 `03_OOP_Methods_Arguments.md`(./03_OOP_Methods_Arguments.md)
+📁 [`03_OOP_Methods_Arguments.md`](./03_OOP_Methods_Arguments.md)
 - Method definition and calling
 - Argument handling (positional, keyword, splat)
 - Method return values and chaining
 - Method introspection and aliasing
 
-#### Access Control and Classes
-📁 `04_OOP_Access_Classes.md`(./04_OOP_Access_Classes.md)
+### 04. Access Control and Classes
+📁 [`04_OOP_Access_Classes.md`](./04_OOP_Access_Classes.md)
 - Access control (public, private, protected)
 - Class definition and features
 - Instance variables and class variables
 - Singleton methods and classes
 - Object introspection
 
-#### Inheritance and Modules
-📁 `05_OOP_Inheritance_Modules.md`(./05_OOP_Inheritance_Modules.md)
+### 05. Inheritance and Modules
+📁 [`05_OOP_Inheritance_Modules.md`](./05_OOP_Inheritance_Modules.md)
 - Class inheritance and method lookup
 - Method overriding and super
 - Modules and mixins (include, extend, prepend)
 - Module hooks and best practices
 - Important standard modules (Enumerable, Comparable)
 
-### 04. Metaprogramming
-📁 `06_Metaprogramming.md`(./06_Metaprogramming.md)
+### 06. Metaprogramming
+📁 [`06_Metaprogramming.md`](./06_Metaprogramming.md)
 - Dynamic method invocation (send, method_missing)
 - Dynamic method definition (define_method)
 - Code evaluation (eval, class_eval, instance_eval)
@@ -54,15 +52,15 @@
 - Class and module manipulation
 - Best practices and security considerations
 
-### 05. Built-in Libraries
-📁 `07_Built_in_Libraries.md`(./07_Built_in_Libraries.md)
+### 07. Built-in Libraries
+📁 [`07_Built_in_Libraries.md`](./07_Built_in_Libraries.md)
 - Regular expressions and pattern matching
 - Proc and Lambda details
 - Enumerator and lazy evaluation
 - Core classes and modules
 
-### 06. Standard Library
-📁 `08_Standard_Library.md`(./08_Standard_Library.md)
+### 08. Standard Library
+📁 [`08_Standard_Library.md`](./08_Standard_Library.md)
 - Time and Date manipulation
 - JSON and YAML processing
 - Singleton and Forwardable modules
