@@ -550,3 +550,78 @@ using R2
 # => Just apply R2, R1 is not applied
 C.new.m1 # => 200
 ```
+
+## Other
+### dup and clone
+- Both Object#dup and Object#clone produce shallow copies. In the case of an Array, this means that the array itself is copied, but the objects within the array are not. So in this specific exaple original[0] and copy[0] both still reference the same object.
+
+- One convention that can be used for creating deep copies in Ruby is to serialize and then deserialize an object, using the Marsal core class, e.g. copy = Marsal.load(Marhal.dump(original)).
+
+- Object#dup does not copy an object's singleton methods. But clone does.
+```ruby
+obj = Object.new
+
+def obj.hello
+  puts "Hi!"
+end
+
+copy = obj.clone
+
+copy.hello
+# => Hi!
+
+copy_dup = obj.dup
+
+copy_dup.hello
+# => NoMethodError (undefined method `hello' for #<Object:0x0000000100000000>)
+```
+
+- Marshal.dump is unable to serialize objects that have singleton methods defined on them.
+
+- There is no Object#copy method.
+
+### to_s
+Many Ruby methods (including Kernel#puts) call to_s in order to convert objects into a string representation. The default implementation of Object#to_s produces simple, generic output which looks like this:
+
+#<ShoppingList:0x007fb651918610>
+
+When the to_s method is overidden in other objects, it can be used to provide a better string representation of the object, as shown in this question.
+
+```ruby
+class ShoppingList
+  def initialize(items)
+    @items = items
+  end
+
+  def to_s
+    @items.join(", ")
+  end
+end
+
+list = ShoppingList.new(["apple", "banana", "cherry"])
+puts list
+# => apple, banana, cherry
+```
+
+### inspect
+The Kernel#p method calls inspect on its arguments in order to produce strings that can be used for debugging purposes. The default functionality of Object#inspect lists provides basic useful information, but the output can be customized by overriding the method in specific classes or objects.
+
+```ruby
+class ShoppingList
+  def initialize(items)
+    @items = items
+  end
+
+  def inspect
+    @items.join(", ")
+  end
+end
+
+list = ShoppingList.new(["apple", "banana", "cherry"])
+p list
+# => #<ShoppingList:0x007fb651918610 @items=["apple", "banana", "cherry"]>
+```
+
+### to_str
+The to_str method is rarely implemented in practice, because it is only useful for situations in which you have an object that closely maps to Ruby's String concept, but is not a String itself. So while this method might be implemented by certain low-level data structures, it is not meant to be used for similar purposes to what to_s and inspect are used for.
+

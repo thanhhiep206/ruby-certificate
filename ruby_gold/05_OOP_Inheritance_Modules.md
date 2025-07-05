@@ -172,6 +172,8 @@ child = Child.new
 puts child.is_a?(Parent)      # => true
 puts child.instance_of?(Parent) # => false
 puts child.class == Child     # => true
+puts child.class.class == Class # => true
+puts Class.superclass == Module # => true
 ```
 
 ### Global Scope Access

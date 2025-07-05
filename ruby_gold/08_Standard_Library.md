@@ -45,6 +45,15 @@ date.day     # => 1
 date.wday    # => 5 (day of week, 0-6)
 ```
 
+- << and >>
+The << operator generates a new Date object that is n months earlier than the current date.
+The >> operator generates a new Date object that is n months later than the current date.
+```ruby
+puts(Date.new(2016,2,29) << 12) #=> 2015-12-28
+puts(Date.new(2016,12,31) << 1) #=> 2016-11-30
+puts(Date.new(2016,12,31) << 2) #=> 2016-10-31
+```
+
 ### DateTime Class
 ```ruby
 require 'date'
@@ -501,4 +510,45 @@ end
 puts fiber.resume 10 # => 12
 puts fiber.resume 1_000_000 # => 1000000
 puts fiber.resume "The fiber will be dead before I can cause trouble" # => FiberError: can't resume dead fiber
+```
+
+### StringIO
+```ruby
+require "stringio"
+strio = StringIO.new # => #<StringIO>
+strio.close
+```
+
+```ruby
+strio = StringIO.open # => #<StringIO>
+```
+
+### Rational
+- BigDecimal extends the native Rational class to provide the to_d method.
+
+```ruby
+Rational(1)      #=> (1/1)
+Rational(2, 3)   #=> (2/3)
+Rational(4, -6)  #=> (-2/3)
+3.to_r           #=> (3/1)
+2/3r             #=> (2/3)
+```
+
+```ruby
+Rational(0.3)    #=> (5404319552844595/18014398509481984)
+Rational('0.3')  #=> (3/10)
+Rational('2/3')  #=> (2/3)
+
+0.3.to_r         #=> (5404319552844595/18014398509481984)
+'0.3'.to_r       #=> (3/10)
+'2/3'.to_r       #=> (2/3)
+0.3.rationalize  #=> (3/10)
+```
+
+### open-uri
+The OpenURI standard library extends the functionality of Kernel#open to allow treating HTTP-based resources as if they were a file. It is a wrapper around the low-level Net::HTTP standard library.
+```ruby
+require "open-uri"
+
+puts open("http://example.com").read
 ```

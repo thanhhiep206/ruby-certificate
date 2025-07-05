@@ -407,3 +407,91 @@ ONE
 content for heredoc two
 TWO
 ``` 
+
+## raise
+- The ancestry chain for each of the classes listed in this question is as follows:
+```ruby
+ArgumentError < StandardError < Exception
+
+ScriptError < Exception
+```
+
+If rescue is called without a specific error class, it will catch StandardError and its descendents by default. Most exceptions in core Ruby are descendents of StandardError, but there are some that are not usually meant to be rescued which exist in other class hierarchies which descend directly from the Exception base clase.
+```ruby
+begin
+  raise ArgumentError # or raise StandardError or raise RuntimeError
+rescue => e
+  puts e.class
+  puts "OK"
+end
+
+# [Execution Result]
+# OK
+```
+
+- StandardError: Parent of most exceptions
+```ruby
+begin
+  result = 10 / 0
+rescue => e
+  puts "Caught a StandardError: #{e.class} - #{e.message}"
+end
+
+begin
+  result = 10 / 0
+rescue StandardError => e
+  puts "Caught a StandardError: #{e.class} - #{e.message}"
+end
+```
+
+- Exception: Parent of all exceptions
+```ruby
+begin
+  raise Exception, "Something went really wrong"
+rescue Exception => e
+  puts "Caught an Exception: #{e.class} - #{e.message}"
+end
+
+begin
+  raise "Something went really wrong"
+rescue Exception => e
+  puts "Caught an Exception: #{e.class} - #{e.message}"
+end
+```
+
+- NameError: When a variable or constant is undefined
+
+- NoMethodError: When call a method that is not defined in the object
+
+- ArgumentError: When call a method with wrong number of arguments
+
+- re-raise
+```ruby
+CustomError = Class.new(StandardError)
+begin
+  raise CustomError, "Something went really wrong"
+rescue => e
+  puts "Caught an Exception: #{e.class} - #{e.message}"
+  raise # re-raise the exception with CustomError
+end
+
+# => CustomError: Something went really wrong
+```
+
+## ensure
+- The ensure branch of a method (or begin/end block) is always run, whether an exception was raised or not.
+
+- However, there is no implicit return value from an ensure branch, and so instead the implicit return value is set to the result of expression that ran just before the ensure branch was executed.
+```ruby
+def greeting
+  "hello"
+ensure
+  puts "Ensured called!"
+
+  "hi"
+end
+
+puts greeting
+# => Ensured called!
+# => hi
+```

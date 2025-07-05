@@ -54,13 +54,13 @@ class Person
   def initialize(age)
     @age = age
   end
-  
+
   def older_than?(other_person)
     @age > other_person.age  # Can access protected method of other instance
   end
-  
+
   protected
-  
+
   def age
     @age
   end
@@ -102,7 +102,7 @@ class User
   def initialize(name)
     @name = name  # Instance variable
   end
-  
+
   def name
     @name
   end
@@ -145,7 +145,7 @@ class Counter
   def self.current_count
     @@count
   end
-  
+
   def initialize
     @@count += 1
   end

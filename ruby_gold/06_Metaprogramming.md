@@ -254,6 +254,17 @@ obj = MyDynamicClass.new("Dynamic")
 obj.greet # => "Hello, I'm Dynamic"
 ```
 
+- Create with inheritance
+```ruby
+class ParentClass
+end
+
+ChildClass = Class.new(ParentClass) do
+end
+
+ChildClass.ancestors # => [ChildClass, ParentClass, Object, Kernel, BasicObject]
+```
+
 ### Dynamic Module Creation
 ```ruby
 # Create module dynamically
