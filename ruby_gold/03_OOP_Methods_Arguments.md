@@ -178,15 +178,20 @@ MyClass.methods.sort  # List all class methods
 ```
 
 ### methods.include? and define_method?
-- methods is list singlton class methods
+- methods is list public methods
 ```ruby
 class MyClass
   def method_one
   end
 end
 
+# singleton class methods
 p MyClass.methods.include?(:method_one) # => true
 p MyClass.methods.include?(:method_two) # => false
+
+# instance methods
+p MyClass.new.methods.include?(:method_one) # => false
+p MyClass.new.methods.include?(:method_two) # => true
 ```
 
 ## Advanced Method Techniques

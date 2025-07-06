@@ -45,7 +45,20 @@ account.withdraw(50)  # Works
 # account.sufficient_funds?(25)  # NoMethodError
 ```
 
-**Note**: `initialize` is always private by default.
+**Note**: 
+- `initialize` is always private by default.
+- `initialize` is a private method of singleton class and instance of the class.
+```ruby
+class C
+public
+  def initialize
+  end
+end
+
+p C.new.private_methods.include? :initialize # => true
+p C.new.singleton_class.private_methods.include? :initialize # => true
+p C.private_methods.include? :initialize # => true
+```
 
 #### Protected Methods
 Accessible by instances of the same class or subclasses:
@@ -342,4 +355,18 @@ class MyClass
     self # => MyClass
   end
 end
+```
+
+### method_defined?
+Returns true if the named method is defined by mod. If inherit is set, the lookup will also search mod’s ancestors. Public and protected methods are matched. String arguments are converted to symbols.
+
+```ruby
+p Class.method_defined? :new # => true
+p String.method_defined? :new # => false
+p String.ancestors # => [String, JSON::Ext::Generator::GeneratorMethods::String, Comparable, Object JSON::Ext::Generator::GeneratorMethods::Object, PP::ObjectMixin, Kernel, BasicObject]
+# => Do not have Class in ancestors
+p Class.singleton_class.method_defined? :new # => true 
+p Class.singleton_class.ancestors # => [#<Class:Class>, #<Class:Module>, #<Class:Object>, #<Class:BasicObject>, Class, ...]
+p String.singleton_class.method_defined? :new # => true
+p String.singleton_class.ancestors # => [#<Class:String>, JSON::Ext::Generator::GeneratorMethods::String::Extend, #<Class:Object>, #<Class:BasicObject>, Class ...]
 ```
