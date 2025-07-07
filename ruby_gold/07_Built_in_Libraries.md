@@ -143,6 +143,19 @@ match.names       # => [] (or named capture names)
 - Compile frequently used patterns once
 
 ## Proc and Lambda Details
+- Proc and Lambda remember the value of variables in the scope where they were created.
+```ruby
+val = 100
+
+def method(val)
+  yield(15 + val)
+end
+
+_proc = Proc.new{|arg| val + arg } # val is 100
+
+p method(val, &_proc)
+# => 215
+```
 
 ### Creating Procs and Lambdas
 

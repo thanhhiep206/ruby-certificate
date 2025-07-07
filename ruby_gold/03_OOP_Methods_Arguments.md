@@ -125,15 +125,18 @@ Using alias and alias_method to create method shortcuts or extend functionality.
 Can alias a method (public, private, protected) or global variable.
 ```ruby
 class User
-  def name
+  def old_method
     @name
   end
   
+  # Just use alias_method in class or module
   alias_method "new_method", "old_method"
   alias_method :new_method, :old_method
+  alias :new_method :old_method
 end
 
 # Alternative syntax
+# Use for create method shortcut for existing method or global variable
 alias new_method old_method
 alias :new_method :old_method
 alias $new_global_val $old_global_val
