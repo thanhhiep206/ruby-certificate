@@ -34,6 +34,22 @@ match_data[1]  # => "John" (first capture group)
 match_data[2]  # => "Doe" (second capture group)
 ```
 
+- $1 is a global variable which can be used in later code:
+```ruby
+ if "foobar" =~ /foo(.*)/ then 
+    puts "The matching word was #{$1}"
+ end
+```
+- $1, $2, $... are the global-variables used by some of the ruby library functions specially concerning REGEX to let programmers use the findings in later codes.
+```ruby
+%r|(http://www(\.)(.*)/)| =~ "http://www.abc.com/"
+# Return value: 0 because it matches the pattern
+
+# $1 = "http://www.abc.com/" → Full match
+# $2 = "." → Dot
+# $3 = "abc.com" → After www.
+```
+
 #### Extracting Matches with scan
 ```ruby
 "hello world".scan(/\w+/)  # => ["hello", "world"]

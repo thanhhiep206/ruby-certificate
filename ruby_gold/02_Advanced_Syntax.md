@@ -495,3 +495,6 @@ puts greeting
 # => Ensured called!
 # => hi
 ```
+
+## filter_map
+Returns a new array containing the truthy results (everything except false or nil) of running the block for every element in enum.

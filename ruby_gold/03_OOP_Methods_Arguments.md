@@ -122,7 +122,7 @@ end
 
 ## Method Aliasing
 Using alias and alias_method to create method shortcuts or extend functionality.
-Can alias a method or global variable.
+Can alias a method (public, private, protected) or global variable.
 ```ruby
 class User
   def name

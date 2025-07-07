@@ -254,19 +254,6 @@ p $c.say
 # => Hello, world
 ```
 
-- self in singleton class is the class itself
-```ruby
-class C
-end
-
-class << C
-  self # => C
-end
-
-# can call singleton class method
-p C.singleton_class # => #<Class:#<C:0x007fa4741607e0>>
-```
-
 ### attr_* Methods
 
 #### Basic Usage
