@@ -120,6 +120,27 @@ class Child < Parent
 end
 ```
 
+- Can use super with parent private method
+```ruby
+class BaseClass
+  private
+
+  def greet
+    puts "Hello World!"
+  end
+end
+
+class ChildClass < BaseClass
+  def greet
+	  super
+  end
+end
+
+
+ChildClass.new.greet
+# => Hello World!
+```
+
 ## Method Aliasing
 Using alias and alias_method to create method shortcuts or extend functionality.
 Can alias a method (public, private, protected) or global variable.

@@ -15,6 +15,15 @@ Array(1..5) #=> [1, 2, 3, 4, 5]
 #### Complex
 
 #### Float
+- Rational + Float -> Float
+```ruby
+1/2r + 1.0 #=> 1.5
+```
+
+- Complex + Float -> Complex
+```ruby
+1 + 1.0 #=> (2.0+0.0i)
+```
 
 #### Hash
 

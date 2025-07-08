@@ -69,6 +69,11 @@ DateTime.parse("2023-12-01T10:30:45")
 dt = DateTime.now
 dt.to_time  # Convert to Time object
 dt.to_date  # Convert to Date object
+
+# DateTime calculation
+d = DateTime.now - DateTime.new(2022,11,18)
+p d.class
+# => Rational
 ```
 
 ## JSON and YAML

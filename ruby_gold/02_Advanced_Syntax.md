@@ -408,6 +408,20 @@ content for heredoc two
 TWO
 ``` 
 
+### Here Document with call method
+```ruby
+def hello
+  puts <<-EOS.gsub(/^\s+/, '') # Remove leading spaces
+    Hello,
+    World!
+  EOS
+end
+
+hello
+# => Hello,
+# => World!
+```
+
 ## raise
 - The ancestry chain for each of the classes listed in this question is as follows:
 ```ruby

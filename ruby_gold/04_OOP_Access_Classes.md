@@ -357,3 +357,6 @@ p Class.singleton_class.ancestors # => [#<Class:Class>, #<Class:Module>, #<Class
 p String.singleton_class.method_defined? :new # => true
 p String.singleton_class.ancestors # => [#<Class:String>, JSON::Ext::Generator::GeneratorMethods::String::Extend, #<Class:Object>, #<Class:BasicObject>, Class ...]
 ```
+
+### class Object
+
