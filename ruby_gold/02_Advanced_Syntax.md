@@ -346,6 +346,7 @@ end
 ```
 
 ## Here Documents
+- https://docs.ruby-lang.org/ja/latest/doc/spec=2fliteral.html#here
 
 ### Basic Here Documents
 ```ruby
