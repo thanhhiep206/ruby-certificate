@@ -160,6 +160,10 @@ end
 user.custom_method # => "Alice is 25 years old"
 ```
 
+### Difference between class_eval(module_eval) and instance_eval
+- class_eval(module_eval) can access class/module constants and methods.
+- instance_eval can access instance variables.
+
 ## Introspection and Reflection
 
 ### Instance Variable Access
