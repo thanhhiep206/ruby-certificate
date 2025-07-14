@@ -152,6 +152,34 @@ method(:puts).to_proc.call(1)   # prints 1
 %i[test many keys].map(&{test: 1})  #=> [1, nil, nil]
 ```
 
+#### Proc Creation
+```ruby
+# Using Proc.new
+my_proc = Proc.new { |x| x * 2 }
+puts my_proc.call(5) # => 10
+
+# Using Kernel's proc method
+my_proc = proc { |x| x ** 2 }
+puts my_proc.call(3) # => 9
+
+# From a block
+def method_that_takes_block(&block)
+  block  # This is now a Proc object
+end
+
+my_proc = method_that_takes_block { |x| x + 1 }
+```
+
+#### Basic Methods
+```ruby
+p = Proc.new { |x| x + 2 }
+
+# Different ways to call
+p.call(5)  # => 7
+p[5]       # => 7 (alternative syntax)
+p.(5)      # => 7 (another alternative)
+```
+
 ### Lambdas
 Lambdas are a special type of Proc with stricter argument handling and different return behavior.
 
@@ -164,6 +192,7 @@ puts my_lambda[10]       # => 20
 
 # Using lambda keyword
 my_lambda = lambda { |x| x * 2 }
+puts my_lambda.call(3) # => 6
 ```
 
 #### Advanced Lambda Features
@@ -181,6 +210,41 @@ puts multiply.call(3, 4)  # => 12
 my_lambda = ->(x, y) { x * y }
 my_lambda.call(10, 20)  # => 200
 my_lambda.call(10)  # ArgumentError: wrong number of arguments (given 1, expected 2)
+```
+
+### Differences Between Proc and Lambda
+
+| Feature           | Proc                           | Lambda                             |
+|-------------------|--------------------------------|------------------------------------|
+| Argument Handling | Allows missing or extra args   | Enforces exact number of args     |
+| return Behavior   | Exits from enclosing method    | Exits only from the lambda itself |
+| Definition Syntax | `Proc.new` or `proc`           | `->` or `lambda`                   |
+
+#### Argument Handling Example
+```ruby
+my_proc = Proc.new { |x, y| puts "#{x}, #{y}" }
+my_proc.call(1)        # => "1, " (missing args become nil)
+
+my_lambda = ->(x, y) { puts "#{x}, #{y}" }
+# my_lambda.call(1)    # => ArgumentError: wrong number of arguments
+```
+
+#### Return Behavior Example
+```ruby
+def test_proc
+  my_proc = Proc.new { return "from proc" }
+  my_proc.call
+  "never reached"
+end
+
+def test_lambda
+  my_lambda = -> { return "from lambda" }
+  my_lambda.call
+  "this is reached"
+end
+
+test_proc    # => "from proc"
+test_lambda  # => "this is reached"
 ```
 
 ## Non-local Exits
