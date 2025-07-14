@@ -13,11 +13,7 @@ Regexp.new("pattern") # Dynamic regex creation
 ```
 
 #### Key Concepts
-- **Special characters**: `.` `\d` `\w` `\s` and their uppercase counterparts for negation (`\D`, `\W`, `\S`)
-- **Quantifiers**: `*`, `+`, `?`, `{m,n}`
-- **Anchors**: `^`, `$`, `\b` for word boundaries
-- **Escaping**: Using `\` to escape special characters
-- **Character classes**: `[abc]`, `[^abc]`
+[Key Concepts](../ruby_silver/02_Built-in_Libraries_03_String.md#regexp)
 
 ### Using Regex in Ruby
 
