@@ -112,20 +112,9 @@ test(5) { puts "Hello, World!" }
 ```ruby
 x = 10
 3.times do |x|
-  puts x # x inside block shadows outer x
+  x = 100 # x inside block shadows outer x
 end
 puts x # => 10 (outer x unchanged)
-```
-
-#### Custom Enumerable Methods
-```ruby
-class Array
-  include Enumerable
-  def each
-    return to_enum unless block_given?
-    # implementation here
-  end
-end
 ```
 
 ### Procs

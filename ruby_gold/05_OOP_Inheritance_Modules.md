@@ -174,6 +174,8 @@ puts child.instance_of?(Parent) # => false
 puts child.class == Child     # => true
 puts child.class.class == Class # => true
 puts Class.superclass == Module # => true
+puts Parent.superclass # => Module
+puts Child.superclass # => Parent
 ```
 
 ### Global Scope Access
@@ -385,6 +387,16 @@ list = TodoList.new
 list << "Buy milk"
 list << "Walk dog"
 list.map(&:upcase)  # => ["BUY MILK", "WALK DOG"]
+```
+
+```ruby
+class Array
+  include Enumerable
+  def each
+    return to_enum unless block_given?
+    # implementation here
+  end
+end
 ```
 
 ### Comparable
