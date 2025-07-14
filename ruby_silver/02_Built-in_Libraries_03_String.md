@@ -39,6 +39,7 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 - \d match with any digit character
 - \D match with any non-digit character
 - \A match with the beginning of the string
+- \$ match with the end of the string
 - \Z match with the end of the string
 - \z match with the end of the string
 - \b match with a word boundary
