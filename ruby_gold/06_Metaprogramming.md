@@ -76,7 +76,7 @@ class C
 end
 
 module M
-  C.class_eval(<<-CODE)
+  C.class_eval(<<-CODE) # C.module_eval
     CONST_IN_HERE_DOC = 100
 
     def awesome_method
@@ -108,7 +108,7 @@ module A
   end
 end
 
-A.module_eval do
+A.module_eval do # A.class_eval
   EVAL_CONST = 100
 
   def self.f
@@ -342,6 +342,7 @@ class UserProfile
 end
 ```
 
+### Method Arguments
 - If the method does not use a splat for args (args), but the block does use a splat for args (*args), then args will be a nested array.
 ```ruby
 def hoge(*args, &block)
