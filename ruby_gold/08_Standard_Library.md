@@ -158,26 +158,6 @@ db1 == db2  # => true (same object)
 # DatabaseConnection.new  # => NoMethodError
 ```
 
-### Manual Singleton Implementation
-```ruby
-class Logger
-  @@instance = nil
-  
-  def self.instance
-    @@instance ||= new
-  end
-  
-  def log(message)
-    puts "[#{Time.now}] #{message}"
-  end
-  
-  private_class_method :new
-end
-
-logger = Logger.instance
-logger.log("Application started")
-```
-
 ## Forwardable Module
 
 ### Method Delegation
