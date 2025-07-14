@@ -307,12 +307,6 @@ enum = collection.each  # Returns Enumerator
 enum.map(&:to_s)       # => ["1", "2", "3"]
 ```
 
-### Performance Considerations
-- **Lazy evaluation** reduces memory usage for large datasets
-- **Enumerators** provide memory-efficient iteration
-- **Chain operations** without creating intermediate arrays
-- **Use `first(n)`** instead of `take(n).to_a` for better performance 
-
 ### Module#refine
 - Module#refine will create a self anonymous module
 ```ruby
@@ -359,6 +353,14 @@ end
 
 - Cannot call using in a method because it will raise an error
 ```ruby
+class C
+  using M
+  def m1
+    using M
+  end
+end
+
+C.new.m1
 ```
 
 - Using just apply last refine
