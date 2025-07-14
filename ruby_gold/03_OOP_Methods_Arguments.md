@@ -169,6 +169,8 @@ alias $new_global_val $old_global_val
 ```ruby
 class MyClass
   def public_method; end
+  protected
+  def protected_method; end
   private
   def private_method; end
 end
@@ -179,6 +181,11 @@ obj = MyClass.new
 obj.respond_to?(:public_method)   # => true
 obj.respond_to?(:private_method)  # => false
 obj.respond_to?(:private_method, true)  # => true (include private)
+
+# List methods
+MyClass.instance_methods(false) # => [:public_method]
+MyClass.private_instance_methods(false) # => [:private_method]
+MyClass.protected_instance_methods(false) # => [:protected_method]
 ```
 
 ### Method Objects
