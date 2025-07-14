@@ -420,6 +420,10 @@ v1 = Version.new("2.1.0")
 v2 = Version.new("2.0.5")
 v1 > v2  # => true
 ```
+- -1 if self is less than the given value (not swap)
+- 0 if self is equal to the given value (not swap)
+- 1 if self is greater than the given value (swap)
+**note** self always is the first argument
 
 ### Math
 Provides mathematical methods and constants:

@@ -261,14 +261,13 @@ def lines_from_file(filename)
   Enumerator.new do |yielder|
     File.foreach(filename) do |line|
       yielder << line.chomp
+      # yield line.chmop
     end
   end
 end
 
 # Process large files lazily
-lines_from_file("large_file.txt").lazy
-  .select { |line| line.include?("ERROR") }
-  .first(10)
+lines_from_file("large_file.txt").lazy.select { |line| line.include?("ERROR") }.first(10)
 ```
 
 #### Yielding
