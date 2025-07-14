@@ -32,19 +32,19 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 - `[]` any character in the range
 - `[^..]` not any character in the range
 - `a-z` from a to z
-- `\w` match with any word character
-- `\W` match with any non-word character
-- `\s` match with any whitespace character
-- `\S` match with any non-whitespace character
-- `\d` match with any digit character
-- `\D` match with any non-digit character
-- `\A` match with the beginning of the string
-- `\$` match with the end of the string
-- `\Z` match with the end of the string
-- `\z` match with the end of the string
-- `\b` match with a word boundary
+- `\w` match with any word character (a-z, A-Z, 0-9, _)
+- `\W` match with any non-word character (not a-z, A-Z, 0-9, _)
+- `\s` match with any whitespace character (space, tab, newline)
+- `\S` match with any non-whitespace character (not space, tab, newline)
+- `\d` match with any digit character (0-9)
+- `\D` match with any non-digit character (not 0-9)
+- `\A` match with the beginning of the string (only at the beginning of the string)
+- `\$` match with the end of the string (only at the end of the string)
+- `\Z` match with the end of the string (only at the end of the string)
+- `\z` match with the end of the string (only at the end of the string)
+- `\b` match with a word boundary (only at the beginning or end of a word)
 - `.*` match with any character zero or more times
-- `^` means matches the beginning of the string
+- `^` means matches the beginning of the string (only at the beginning of the string)
 - `[x-y]+` means match with any character in the range x to y zero or more times
 
 
