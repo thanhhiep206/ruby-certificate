@@ -369,3 +369,40 @@ class UserProfile
   end
 end
 ```
+
+- If the method does not use a splat for args (args), but the block does use a splat for args (*args), then args will be a nested array.
+```ruby
+def hoge(*args, &block)
+  block.call(args)
+end
+
+hoge(1, 2, 3, 4) do |*args|
+  p args
+end
+# => [[1, 2, 3, 4]]
+``` 
+
+- If both the method and the block use no splat in args (args), or both use splat in args (*args), then args will be a flat array.
+```ruby
+def hoge(*args, &block)
+  block.call(args)
+end
+
+hoge(1, 2, 3, 4) do |args|
+  p args
+end
+
+# => [1, 2, 3, 4]
+```
+
+- If the method uses a splat for args (*args), but the block does not use a splat for args (args), then args will be `1`, because args does not receive an array (*args).
+```ruby
+def hoge(*args, &block)
+  block.call(*args)
+end
+
+hoge(1, 2, 3, 4) do |args|
+  p args
+end
+# => 1
+```
