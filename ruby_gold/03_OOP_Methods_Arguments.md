@@ -208,11 +208,14 @@ MyClass.private_instance_methods(false)  # => [:private_method]
 MyClass.methods.sort  # List all class methods
 ```
 
-### methods.include? and define_method?
+### methods.include?
 - methods is list public methods
 ```ruby
 class MyClass
-  def method_one
+  def self.method_one
+  end
+
+  def method_two
   end
 end
 
