@@ -22,30 +22,30 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 ```
 
 #### Regexp
-- \& and \0 correspond to $&, which contains the complete matched text.
-- \' corresponds to $', which contains string after match.
-- \` corresponds to $`, which contains string before match.
-- + corresponds to $+, which contains last capture group.
+- `\&` and `\0` correspond to $&, which contains the complete matched text.
+- `\'` corresponds to $', which contains string after match.
+- `\` corresponds to $`, which contains string before match.
+- `+` corresponds to $+, which contains last capture group.
 
-- . compare with single character
-- .. compare with two characters
-- [] [] any character in the range
-- [^..] not any character in the range
-- a-z from a to z
-- \w match with any word character
-- \W match with any non-word character
-- \s match with any whitespace character
-- \S match with any non-whitespace character
-- \d match with any digit character
-- \D match with any non-digit character
-- \A match with the beginning of the string
-- \$ match with the end of the string
-- \Z match with the end of the string
-- \z match with the end of the string
-- \b match with a word boundary
-- .* match with any character zero or more times
-- ^ means matches the beginning of the string
-- [x-y]+ means match with any character in the range x to y zero or more times
+- `.` compare with single character
+- `..` compare with two characters
+- `[]` any character in the range
+- `[^..]` not any character in the range
+- `a-z` from a to z
+- `\w` match with any word character
+- `\W` match with any non-word character
+- `\s` match with any whitespace character
+- `\S` match with any non-whitespace character
+- `\d` match with any digit character
+- `\D` match with any non-digit character
+- `\A` match with the beginning of the string
+- `\$` match with the end of the string
+- `\Z` match with the end of the string
+- `\z` match with the end of the string
+- `\b` match with a word boundary
+- `.*` match with any character zero or more times
+- `^` means matches the beginning of the string
+- `[x-y]+` means match with any character in the range x to y zero or more times
 
 
 #### Hash replacement
