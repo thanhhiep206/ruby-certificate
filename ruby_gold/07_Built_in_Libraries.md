@@ -36,7 +36,7 @@ match_data[2]  # => "Doe" (second capture group)
     puts "The matching word was #{$1}"
  end
 ```
-- $1, $2, $... are the global-variables used by some of the ruby library functions specially concerning REGEX to let programmers use the findings in later codes.
+- `$1`, `$2`, `$...` are the global-variables used by some of the ruby library functions specially concerning REGEX to let programmers use the findings in later codes.
 ```ruby
 %r|(http://www(\.)(.*)/)| =~ "http://www.abc.com/"
 # Return value: 0 because it matches the pattern
