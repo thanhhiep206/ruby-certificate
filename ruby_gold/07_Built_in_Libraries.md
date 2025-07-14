@@ -55,6 +55,11 @@ match_data[2]  # => "Doe" (second capture group)
 "hello world".scan(/\w+/)  # => ["hello", "world"]
 "abc 123 def 456".scan(/\d+/)  # => ["123", "456"]
 ```
+**note**: scan does not perform overlapping matches
+```ruby
+p "x1x3x5x7".scan(/..[1-5]./) # => ["1x3x"]
+p "x1x3x5x7".scan(/.[1-5]./) # => ["x1x", "x5x"]
+```
 
 #### String Substitution
 ```ruby

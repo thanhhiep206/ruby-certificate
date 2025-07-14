@@ -174,6 +174,8 @@ puts child.instance_of?(Parent) # => false
 puts child.class == Child     # => true
 puts child.class.class == Class # => true
 puts Class.superclass == Module # => true
+puts Parent.superclass # => Module
+puts Child.superclass # => Parent
 ```
 
 ### Global Scope Access

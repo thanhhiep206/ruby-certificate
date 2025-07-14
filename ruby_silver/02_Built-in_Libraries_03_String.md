@@ -28,6 +28,7 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 - + corresponds to $+, which contains last capture group.
 
 - . compare with single character
+- .. compare with two characters
 - [] [] any character in the range
 - [^..] not any character in the range
 - a-z from a to z
@@ -42,6 +43,8 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 - \z match with the end of the string
 - \b match with a word boundary
 - .* match with any character zero or more times
+- ^ means matches the beginning of the string
+- [x-y]+ means match with any character in the range x to y zero or more times
 
 
 #### Hash replacement
