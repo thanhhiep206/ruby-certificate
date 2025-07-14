@@ -389,6 +389,16 @@ list << "Walk dog"
 list.map(&:upcase)  # => ["BUY MILK", "WALK DOG"]
 ```
 
+```ruby
+class Array
+  include Enumerable
+  def each
+    return to_enum unless block_given?
+    # implementation here
+  end
+end
+```
+
 ### Comparable
 Adds comparison methods:
 ```ruby
