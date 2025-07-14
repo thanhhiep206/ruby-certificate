@@ -132,10 +132,9 @@ end
 
 class ChildClass < BaseClass
   def greet
-	  super
+    super
   end
 end
-
 
 ChildClass.new.greet
 # => Hello World!
@@ -146,6 +145,7 @@ Using alias and alias_method to create method shortcuts or extend functionality.
 Can alias a method (public, private, protected) or global variable.
 ```ruby
 class User
+  $a = 1
   def old_method
     @name
   end
@@ -157,7 +157,7 @@ class User
 end
 
 # Alternative syntax
-# Use for create method shortcut for existing method or global variable
+# alias can use both inside and outside of class or module
 alias new_method old_method
 alias :new_method :old_method
 alias $new_global_val $old_global_val
@@ -169,6 +169,8 @@ alias $new_global_val $old_global_val
 ```ruby
 class MyClass
   def public_method; end
+  protected
+  def protected_method; end
   private
   def private_method; end
 end
@@ -179,6 +181,11 @@ obj = MyClass.new
 obj.respond_to?(:public_method)   # => true
 obj.respond_to?(:private_method)  # => false
 obj.respond_to?(:private_method, true)  # => true (include private)
+
+# List methods
+MyClass.instance_methods(false) # => [:public_method]
+MyClass.private_instance_methods(false) # => [:private_method]
+MyClass.protected_instance_methods(false) # => [:protected_method]
 ```
 
 ### Method Objects
@@ -201,11 +208,14 @@ MyClass.private_instance_methods(false)  # => [:private_method]
 MyClass.methods.sort  # List all class methods
 ```
 
-### methods.include? and define_method?
+### methods.include?
 - methods is list public methods
 ```ruby
 class MyClass
-  def method_one
+  def self.method_one
+  end
+
+  def method_two
   end
 end
 

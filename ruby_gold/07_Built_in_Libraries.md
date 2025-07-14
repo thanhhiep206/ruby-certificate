@@ -453,36 +453,12 @@ end
 # => hello, world
 ```
 
-### Enumerator vs Enumerable
-
-#### Enumerable
-- A mixin module providing traversal capabilities
-- Included in Array, Hash, Range, etc.
-- Requires `each` method to be defined
-
-#### Enumerator
+### Enumerator
 - A class that implements enumeration methods
 - Can wrap any object to provide enumeration
 - Doesn't require the object to include Enumerable
 
 ```ruby
-# Custom class with Enumerable
-class TodoList
-  include Enumerable
-  
-  def initialize
-    @items = []
-  end
-  
-  def each
-    @items.each { |item| yield(item) }
-  end
-  
-  def <<(item)
-    @items << item
-  end
-end
-
 # Using Enumerator for external iteration
 class SimpleCollection
   def initialize(*items)

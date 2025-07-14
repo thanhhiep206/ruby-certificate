@@ -190,34 +190,6 @@ user.instance_variables # => [:@name, :@email, :@age]
 user.instance_variable_defined?(:@name) # => true
 ```
 
-### Method Introspection
-```ruby
-class User
-  def public_method; end
-  
-  private
-  def private_method; end
-  
-  protected
-  def protected_method; end
-end
-
-user = User.new
-
-# Check method existence
-user.respond_to?(:public_method) # => true
-user.respond_to?(:private_method, true) # => true (include private)
-
-# List methods
-User.instance_methods(false) # => [:public_method]
-User.private_instance_methods(false) # => [:private_method]
-User.protected_instance_methods(false) # => [:protected_method]
-
-# Get method object
-method_obj = user.method(:public_method)
-method_obj.call
-```
-
 ### Constant Access
 ```ruby
 class User
