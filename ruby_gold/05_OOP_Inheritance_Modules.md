@@ -399,6 +399,24 @@ class Array
 end
 ```
 
+- Extend Enumerable
+```ruby
+module Enumerable
+  def with_prefix(prefix)
+    return to_enum(:with_prefix, prefix) { size } unless block_given?
+    # return to_enum(__method__, prefix) { size } unless block_given?
+
+    each do |char|
+      yield "#{prefix} #{char}"
+    end
+  end
+end
+
+[1,2,3,4,5].with_prefix("Awesome").reverse_each {|char|
+  puts char
+}
+```
+
 ### Comparable
 Adds comparison methods:
 ```ruby
@@ -420,6 +438,10 @@ v1 = Version.new("2.1.0")
 v2 = Version.new("2.0.5")
 v1 > v2  # => true
 ```
+- -1 if self is less than the given value (not swap)
+- 0 if self is equal to the given value (not swap)
+- 1 if self is greater than the given value (swap)
+**note** self always is the first argument
 
 ### Math
 Provides mathematical methods and constants:

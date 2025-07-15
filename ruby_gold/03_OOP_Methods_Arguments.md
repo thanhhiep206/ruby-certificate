@@ -186,6 +186,7 @@ obj.respond_to?(:private_method, true)  # => true (include private)
 MyClass.instance_methods(false) # => [:public_method]
 MyClass.private_instance_methods(false) # => [:private_method]
 MyClass.protected_instance_methods(false) # => [:protected_method]
+MyClass.methods.sort  # List all class methods
 ```
 
 ### Method Objects
@@ -198,14 +199,6 @@ method_obj.call
 method_obj.arity          # Returns number of arguments
 method_obj.source_location # Returns [file, line] where defined
 method_obj.parameters     # Returns parameter information
-```
-
-### Listing Methods
-```ruby
-# List methods
-MyClass.instance_methods(false)  # => [:public_method]
-MyClass.private_instance_methods(false)  # => [:private_method]
-MyClass.methods.sort  # List all class methods
 ```
 
 ### methods.include?
@@ -264,3 +257,13 @@ end
 greeter = DynamicGreeter.new
 greeter.greet_john # => "Hello, John!"
 ``` 
+
+### Const Missing
+```ruby
+class Foo
+  def self.const_missing(a)
+    p "#{a}"
+  end
+end
+Foo::B # => "B"
+```

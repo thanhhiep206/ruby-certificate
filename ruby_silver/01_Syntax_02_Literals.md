@@ -197,3 +197,4 @@ puts a #=> "  Ruby\n  Php\n"
 | <<-'END'  | This is an indented heredoc, but string interpolation is not allowed                                              |
 | <<"END"   | String interpolation is allowed, and there is no special handling for indentation                                 |
 | <<-"END"  | This is the same as <<-END. String interpolation is allowed, and the ending delimiter can be indented             |
+| <<~END    | Remove leading whitespace from the lines of the heredoc, can execute code in the heredoc                          |

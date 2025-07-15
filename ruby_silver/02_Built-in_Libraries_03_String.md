@@ -22,31 +22,30 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 ```
 
 #### Regexp
-- \& and \0 correspond to $&, which contains the complete matched text.
-- \' corresponds to $', which contains string after match.
-- \` corresponds to $`, which contains string before match.
-- + corresponds to $+, which contains last capture group.
+- `\&` and `\0` correspond to $&, which contains the complete matched text.
+- `\'` corresponds to $', which contains string after match.
+- `\` corresponds to $`, which contains string before match.
+- `+` corresponds to $+, which contains last capture group.
 
-- . compare with single character
-- .. compare with two characters
-- [] [] any character in the range
-- [^..] not any character in the range
-- a-z from a to z
-- \w match with any word character
-- \W match with any non-word character
-- \s match with any whitespace character
-- \S match with any non-whitespace character
-- \d match with any digit character
-- \D match with any non-digit character
-- \A match with the beginning of the string
-- \$ match with the end of the string
-- \Z match with the end of the string
-- \z match with the end of the string
-- \b match with a word boundary
-- .* match with any character zero or more times
-- ^ means matches the beginning of the string
-- [x-y]+ means match with any character in the range x to y zero or more times
-
+- `.` compare with single character
+- `..` compare with two characters
+- `[]` any character in the range
+- `[^..]` not any character in the range
+- `a-z` from a to z
+- `\w` match with any word character (a-z, A-Z, 0-9, _)
+- `\W` match with any non-word character (not a-z, A-Z, 0-9, _)
+- `\s` match with any whitespace character (space, tab, newline)
+- `\S` match with any non-whitespace character (not space, tab, newline)
+- `\d` match with any digit character (0-9)
+- `\D` match with any non-digit character (not 0-9)
+- `\A` match with the beginning of the string (only at the beginning of the string)
+- `\$` match with the end of the string (only at the end of the string)
+- `\Z` match with the end of the string (only at the end of the string)
+- `\z` match with the end of the string (only at the end of the string)
+- `\b` match with a word boundary (only at the beginning or end of a word)
+- `.*` match with any character zero or more times
+- `^` means matches the beginning of the string (only at the beginning of the string)
+- `()` means capture group (save to group `$1`, `$2`, `$3`, ...)
 
 #### Hash replacement
 If argument replacement is a hash, and pattern matches one of its keys, the replacing string is the value for that key:

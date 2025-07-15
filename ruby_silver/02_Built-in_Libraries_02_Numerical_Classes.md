@@ -35,10 +35,10 @@ Returns -1, nil or +1, depending on whether self is -Infinity<tt>, finite, or <t
 
 ### Comparing
 #### <=>
-- -1 if self is less than the given value.
-- 0 if self is equal to the given value.
-- 1 if self is greater than the given value.
-- nil if self and the given value are not comparable.
+- -1 if self is less than the given value (not swap)
+- 0 if self is equal to the given value (not swap)
+- 1 if self is greater than the given value (swap) (self is the first argument)
+- nil if self and the given value are not comparable
 
 #### eql?
 Returns whether self and the given value have the same value and type.

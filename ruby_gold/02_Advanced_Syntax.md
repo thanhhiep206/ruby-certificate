@@ -118,6 +118,7 @@ puts x # => 10 (outer x unchanged)
 ```
 
 ### Procs
+#### Proc Creation
 ```ruby
 square = Proc.new {|x| x**2 }
 
@@ -140,6 +141,7 @@ times5.call(5)                #=> 25
 times3.call(times5.call(4))   #=> 60
 ```
 
+#### to_proc
 - to_proc will return a proc that will call the method on the object
 ```ruby
 :to_s.to_proc.call(1)           #=> "1"
@@ -150,6 +152,22 @@ method(:puts).to_proc.call(1)   # prints 1
 
 {test: 1}.to_proc.call(:test)       #=> 1
 %i[test many keys].map(&{test: 1})  #=> [1, nil, nil]
+```
+
+- To execute a Proc object as a method, you need to convert it into a block.
+  - You can convert a Proc object into a block by prefixing it with &.
+  - Also, the to_proc method generates and returns a Proc object. When you call to_proc on a Proc object as the receiver, it simply returns itself.
+```ruby
+val = 100
+
+def method(val)
+  yield(15 + val)
+end
+
+_proc = Proc.new{|arg| val + arg }
+
+p method(val, &_proc)
+p method(val, &_proc.to_proc)
 ```
 
 ### Lambdas
@@ -164,6 +182,7 @@ puts my_lambda[10]       # => 20
 
 # Using lambda keyword
 my_lambda = lambda { |x| x * 2 }
+puts my_lambda.call(3) # => 6
 ```
 
 #### Advanced Lambda Features
@@ -181,6 +200,41 @@ puts multiply.call(3, 4)  # => 12
 my_lambda = ->(x, y) { x * y }
 my_lambda.call(10, 20)  # => 200
 my_lambda.call(10)  # ArgumentError: wrong number of arguments (given 1, expected 2)
+```
+
+### Differences Between Proc and Lambda
+
+| Feature           | Proc                           | Lambda                             |
+|-------------------|--------------------------------|------------------------------------|
+| Argument Handling | Allows missing or extra args   | Enforces exact number of args     |
+| return Behavior   | Exits from enclosing method    | Exits only from the lambda itself |
+| Definition Syntax | `Proc.new` or `proc`           | `->` or `lambda`                   |
+
+#### Argument Handling Example
+```ruby
+my_proc = Proc.new { |x, y| puts "#{x}, #{y}" }
+my_proc.call(1)        # => "1, " (missing args become nil)
+
+my_lambda = ->(x, y) { puts "#{x}, #{y}" }
+# my_lambda.call(1)    # => ArgumentError: wrong number of arguments
+```
+
+#### Return Behavior Example
+```ruby
+def test_proc
+  my_proc = Proc.new { return "from proc" }
+  my_proc.call
+  "never reached"
+end
+
+def test_lambda
+  my_lambda = -> { return "from lambda" }
+  my_lambda.call
+  "this is reached"
+end
+
+test_proc    # => "from proc"
+test_lambda  # => "this is reached"
 ```
 
 ## Non-local Exits

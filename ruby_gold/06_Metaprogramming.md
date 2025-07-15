@@ -76,7 +76,7 @@ class C
 end
 
 module M
-  C.class_eval(<<-CODE)
+  C.class_eval(<<-CODE) # C.module_eval
     CONST_IN_HERE_DOC = 100
 
     def awesome_method
@@ -108,7 +108,7 @@ module A
   end
 end
 
-A.module_eval do
+A.module_eval do # A.class_eval
   EVAL_CONST = 100
 
   def self.f
@@ -141,7 +141,10 @@ p Object.const_get(:B) # "Hello, world
 **Use a string when you need to access the class's scope, use a block for complex code.**
 
 ### instance_eval
-Evaluate code in the context of an instance:
+- Evaluate code in the context of an instance
+- Access to instance variables
+- Access to private/protected method
+
 ```ruby
 class User
   def initialize(name)
@@ -158,6 +161,36 @@ user.instance_eval do
 end
 
 user.custom_method # => "Alice is 25 years old"
+```
+
+**note**
+- Use instance_eval(class_eval) with module will loss lexical scope
+```ruby
+module M
+  CONST = "Hello, world"
+end
+
+M.instance_eval(<<-CODE) # M.class_eval
+  def say
+    CONST
+  end
+CODE
+
+p M::say # uninitialized constant CONST
+```
+- Use module_eval will not loss lexical scope
+```ruby
+module M
+  CONST = "Hello, world"
+end
+
+M.module_eval(<<-CODE)
+  def say
+    CONST
+  end
+CODE
+
+p M::say # "Hello, world"
 ```
 
 ### Difference between class_eval(module_eval) and instance_eval
@@ -342,6 +375,7 @@ class UserProfile
 end
 ```
 
+### Method Arguments
 - If the method does not use a splat for args (args), but the block does use a splat for args (*args), then args will be a nested array.
 ```ruby
 def hoge(*args, &block)

@@ -13,11 +13,7 @@ Regexp.new("pattern") # Dynamic regex creation
 ```
 
 #### Key Concepts
-- **Special characters**: `.` `\d` `\w` `\s` and their uppercase counterparts for negation (`\D`, `\W`, `\S`)
-- **Quantifiers**: `*`, `+`, `?`, `{m,n}`
-- **Anchors**: `^`, `$`, `\b` for word boundaries
-- **Escaping**: Using `\` to escape special characters
-- **Character classes**: `[abc]`, `[^abc]`
+[Key Concepts](../ruby_silver/02_Built-in_Libraries_03_String.md#regexp)
 
 ### Using Regex in Ruby
 
@@ -40,7 +36,7 @@ match_data[2]  # => "Doe" (second capture group)
     puts "The matching word was #{$1}"
  end
 ```
-- $1, $2, $... are the global-variables used by some of the ruby library functions specially concerning REGEX to let programmers use the findings in later codes.
+- `$1`, `$2`, `$...` are the global-variables used by some of the ruby library functions specially concerning REGEX to let programmers use the findings in later codes.
 ```ruby
 %r|(http://www(\.)(.*)/)| =~ "http://www.abc.com/"
 # Return value: 0 because it matches the pattern
@@ -142,171 +138,6 @@ match.names       # => [] (or named capture names)
 "hello".gsub(/(.)(.)/,'\2\1')  # => "ehllo" (swap characters)
 ```
 
-### Regex Performance
-- Avoid catastrophic backtracking with complex patterns
-- Use lazy quantifiers (`*?`, `+?`) when appropriate
-- Compile frequently used patterns once
-
-## Proc and Lambda Details
-- Proc and Lambda remember the value of variables in the scope where they were created.
-```ruby
-val = 100
-
-def method(val)
-  yield(15 + val)
-end
-
-_proc = Proc.new{|arg| val + arg } # val is 100
-
-p method(val, &_proc)
-# => 215
-```
-
-### Creating Procs and Lambdas
-
-#### Proc Creation
-```ruby
-# Using Proc.new
-my_proc = Proc.new { |x| x * 2 }
-puts my_proc.call(5) # => 10
-
-# Using Kernel's proc method
-my_proc = proc { |x| x ** 2 }
-puts my_proc.call(3) # => 9
-
-# From a block
-def method_that_takes_block(&block)
-  block  # This is now a Proc object
-end
-
-my_proc = method_that_takes_block { |x| x + 1 }
-```
-
-#### Lambda Creation
-```ruby
-# Using -> syntax (stabby lambda)
-my_lambda = ->(x) { x + 1 }
-puts my_lambda.call(4) # => 5
-
-# Using lambda keyword
-my_lambda = lambda { |x| x * 2 }
-puts my_lambda.call(3) # => 6
-```
-
-### Differences Between Proc and Lambda
-
-| Feature           | Proc                           | Lambda                             |
-|-------------------|--------------------------------|------------------------------------|
-| Argument Handling | Allows missing or extra args   | Enforces exact number of args     |
-| return Behavior   | Exits from enclosing method    | Exits only from the lambda itself |
-| Definition Syntax | `Proc.new` or `proc`           | `->` or `lambda`                   |
-
-#### Argument Handling Example
-```ruby
-my_proc = Proc.new { |x, y| puts "#{x}, #{y}" }
-my_proc.call(1)        # => "1, " (missing args become nil)
-
-my_lambda = ->(x, y) { puts "#{x}, #{y}" }
-# my_lambda.call(1)    # => ArgumentError: wrong number of arguments
-```
-
-#### Return Behavior Example
-```ruby
-def test_proc
-  my_proc = Proc.new { return "from proc" }
-  my_proc.call
-  "never reached"
-end
-
-def test_lambda
-  my_lambda = -> { return "from lambda" }
-  my_lambda.call
-  "this is reached"
-end
-
-test_proc    # => "from proc"
-test_lambda  # => "this is reached"
-```
-
-### Proc Methods
-
-#### Basic Methods
-```ruby
-p = Proc.new { |x| x + 2 }
-
-# Different ways to call
-p.call(5)  # => 7
-p[5]       # => 7 (alternative syntax)
-p.(5)      # => 7 (another alternative)
-```
-
-#### Introspection Methods
-```ruby
-p = ->(x, y = 1, *args, z:, **kwargs) { x + y }
-
-# Get arity (number of required arguments)
-p.arity  # => 1
-
-# Get source location
-p.source_location  # => ["file_path", line_number]
-
-# Get parameter information
-p.parameters
-# => [[:req, :x], [:opt, :y], [:rest, :args], [:keyreq, :z], [:keyrest, :kwargs]]
-```
-
-### Use Cases for Procs
-
-#### Callbacks
-```ruby
-def execute_callback(callback)
-  puts "Before callback"
-  result = callback.call
-  puts "After callback"
-  result
-end
-
-callback = Proc.new { puts "Callback executed!"; 42 }
-execute_callback(callback)
-```
-
-#### Custom Iterators
-```ruby
-def my_each(array, &block)
-  array.each { |element| block.call(element) }
-end
-
-my_each([1, 2, 3]) { |x| puts x * 2 }
-```
-
-#### Variable Capture
-```ruby
-var = 1
-my_proc = Proc.new { puts var }
-var = 2
-my_proc.call  # => 2 (captures current value when called)
-```
-
-#### Dynamic Method Definitions
-```ruby
-class Calculator
-  operations = {
-    add: ->(a, b) { a + b },
-    subtract: ->(a, b) { a - b },
-    multiply: ->(a, b) { a * b }
-  }
-  
-  operations.each do |name, operation|
-    define_method(name) do |a, b|
-      operation.call(a, b)
-    end
-  end
-end
-
-calc = Calculator.new
-calc.add(2, 3)  # => 5
-```
-
 ## Enumerator and Lazy Evaluation
 
 ### Understanding Enumerator
@@ -365,6 +196,7 @@ lazy_enum = (1..1000).lazy
 
 # Infinite sequences
 infinite_enum = (1..Float::INFINITY).lazy
+infinite_enum = (1..).lazy
 ```
 
 #### Lazy vs Eager Operations
@@ -430,14 +262,13 @@ def lines_from_file(filename)
   Enumerator.new do |yielder|
     File.foreach(filename) do |line|
       yielder << line.chomp
+      # yield line.chmop
     end
   end
 end
 
 # Process large files lazily
-lines_from_file("large_file.txt").lazy
-  .select { |line| line.include?("ERROR") }
-  .first(10)
+lines_from_file("large_file.txt").lazy.select { |line| line.include?("ERROR") }.first(10)
 ```
 
 #### Yielding
@@ -475,12 +306,6 @@ collection = SimpleCollection.new(1, 2, 3)
 enum = collection.each  # Returns Enumerator
 enum.map(&:to_s)       # => ["1", "2", "3"]
 ```
-
-### Performance Considerations
-- **Lazy evaluation** reduces memory usage for large datasets
-- **Enumerators** provide memory-efficient iteration
-- **Chain operations** without creating intermediate arrays
-- **Use `first(n)`** instead of `take(n).to_a` for better performance 
 
 ### Module#refine
 - Module#refine will create a self anonymous module
@@ -528,6 +353,14 @@ end
 
 - Cannot call using in a method because it will raise an error
 ```ruby
+class C
+  using M
+  def m1
+    using M
+  end
+end
+
+C.new.m1
 ```
 
 - Using just apply last refine

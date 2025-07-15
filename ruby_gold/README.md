@@ -82,7 +82,6 @@ docker run -it --rm ruby:3.1 irb
 ### 07. Built-in Libraries
 📁 [`07_Built_in_Libraries.md`](./07_Built_in_Libraries.md)
 - Regular expressions and pattern matching
-- Proc and Lambda details
 - Enumerator and lazy evaluation
 - Core classes and modules
 
