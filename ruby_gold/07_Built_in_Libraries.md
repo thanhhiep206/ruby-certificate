@@ -196,6 +196,7 @@ lazy_enum = (1..1000).lazy
 
 # Infinite sequences
 infinite_enum = (1..Float::INFINITY).lazy
+infinite_enum = (1..).lazy
 ```
 
 #### Lazy vs Eager Operations

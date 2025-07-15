@@ -45,8 +45,7 @@ s.gsub(/xyzzy/, '*')   # => "hello"
 - `\b` match with a word boundary (only at the beginning or end of a word)
 - `.*` match with any character zero or more times
 - `^` means matches the beginning of the string (only at the beginning of the string)
-- `[x-y]+` means match with any character in the range x to y zero or more times
-
+- `()` means capture group (save to group `$1`, `$2`, `$3`, ...)
 
 #### Hash replacement
 If argument replacement is a hash, and pattern matches one of its keys, the replacing string is the value for that key:

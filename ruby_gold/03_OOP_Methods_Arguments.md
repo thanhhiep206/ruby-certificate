@@ -264,3 +264,13 @@ end
 greeter = DynamicGreeter.new
 greeter.greet_john # => "Hello, John!"
 ``` 
+
+### Const Missing
+```ruby
+class Foo
+  def self.const_missing(a)
+    p "#{a}"
+  end
+end
+Foo::B # => "B"
+```
