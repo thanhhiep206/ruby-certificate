@@ -118,6 +118,7 @@ puts x # => 10 (outer x unchanged)
 ```
 
 ### Procs
+#### Proc Creation
 ```ruby
 square = Proc.new {|x| x**2 }
 
@@ -140,6 +141,7 @@ times5.call(5)                #=> 25
 times3.call(times5.call(4))   #=> 60
 ```
 
+#### to_proc
 - to_proc will return a proc that will call the method on the object
 ```ruby
 :to_s.to_proc.call(1)           #=> "1"
@@ -152,32 +154,20 @@ method(:puts).to_proc.call(1)   # prints 1
 %i[test many keys].map(&{test: 1})  #=> [1, nil, nil]
 ```
 
-#### Proc Creation
+- To execute a Proc object as a method, you need to convert it into a block.
+  - You can convert a Proc object into a block by prefixing it with &.
+  - Also, the to_proc method generates and returns a Proc object. When you call to_proc on a Proc object as the receiver, it simply returns itself.
 ```ruby
-# Using Proc.new
-my_proc = Proc.new { |x| x * 2 }
-puts my_proc.call(5) # => 10
+val = 100
 
-# Using Kernel's proc method
-my_proc = proc { |x| x ** 2 }
-puts my_proc.call(3) # => 9
-
-# From a block
-def method_that_takes_block(&block)
-  block  # This is now a Proc object
+def method(val)
+  yield(15 + val)
 end
 
-my_proc = method_that_takes_block { |x| x + 1 }
-```
+_proc = Proc.new{|arg| val + arg }
 
-#### Basic Methods
-```ruby
-p = Proc.new { |x| x + 2 }
-
-# Different ways to call
-p.call(5)  # => 7
-p[5]       # => 7 (alternative syntax)
-p.(5)      # => 7 (another alternative)
+p method(val, &_proc)
+p method(val, &_proc.to_proc)
 ```
 
 ### Lambdas
