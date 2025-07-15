@@ -273,18 +273,6 @@ class MyClass
 end
 ```
 
-#### Important Note
-attr_* cannot use super:
-```ruby
-class MyClass
-  attr_accessor :name
-
-  def name
-    "Mr. #{super}"  # This will cause an error
-  end
-end
-```
-
 ### Advanced Class Features
 
 #### Object Introspection
