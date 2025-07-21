@@ -38,5 +38,3 @@
 - **-W[level=2|:category]**: set warning level; 0=silence, 1=medium, 2=verbose
 - **-x[directory]**: strip off text before #!ruby line and perhaps cd to directory
 - **-h**: show this message, --help for more info
-
-=> an cut di em iu lam no phai suong va wow xep hinh
